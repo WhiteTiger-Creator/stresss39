@@ -1,0 +1,419 @@
+{
+  "model": {
+    "tree": {
+      "type": "split",
+      "feature": 0,
+      "threshold": 4,
+      "n_samples": 70,
+      "left": {
+        "type": "split",
+        "feature": 2,
+        "threshold": 2,
+        "n_samples": 36,
+        "left": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 6,
+          "n_samples": 14,
+          "left": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 1,
+            "n_samples": 11,
+            "left": {
+              "type": "split",
+              "feature": 3,
+              "threshold": 4,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  19,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  20,
+                  1
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 0,
+              "n_samples": 7,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  39,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  106,
+                  5
+                ],
+                "n_samples": 5
+              }
+            }
+          },
+          "right": {
+            "type": "leaf",
+            "value": [
+              15,
+              1
+            ],
+            "n_samples": 3
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 5,
+          "n_samples": 22,
+          "left": {
+            "type": "split",
+            "feature": 3,
+            "threshold": 2,
+            "n_samples": 15,
+            "left": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 0,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  14,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  13,
+                  1
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 7,
+              "n_samples": 11,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  15,
+                  1
+                ],
+                "n_samples": 9
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  27,
+                  2
+                ],
+                "n_samples": 2
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 6,
+            "n_samples": 7,
+            "left": {
+              "type": "leaf",
+              "value": [
+                51,
+                5
+              ],
+              "n_samples": 5
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                9,
+                1
+              ],
+              "n_samples": 2
+            }
+          }
+        }
+      },
+      "right": {
+        "type": "split",
+        "feature": 2,
+        "threshold": 2,
+        "n_samples": 34,
+        "left": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 6,
+          "n_samples": 14,
+          "left": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 3,
+            "n_samples": 8,
+            "left": {
+              "type": "leaf",
+              "value": [
+                86,
+                3
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 5,
+              "n_samples": 5,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  32,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  30,
+                  1
+                ],
+                "n_samples": 3
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 6,
+            "n_samples": 6,
+            "left": {
+              "type": "leaf",
+              "value": [
+                51,
+                2
+              ],
+              "n_samples": 2
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 8,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  45,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  49,
+                  2
+                ],
+                "n_samples": 2
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 6,
+          "n_samples": 20,
+          "left": {
+            "type": "split",
+            "feature": 3,
+            "threshold": 3,
+            "n_samples": 13,
+            "left": {
+              "type": "leaf",
+              "value": [
+                67,
+                3
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 0,
+              "n_samples": 10,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  51,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  189,
+                  8
+                ],
+                "n_samples": 8
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 3,
+            "threshold": 4,
+            "n_samples": 7,
+            "left": {
+              "type": "leaf",
+              "value": [
+                92,
+                5
+              ],
+              "n_samples": 5
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                33,
+                2
+              ],
+              "n_samples": 2
+            }
+          }
+        }
+      }
+    },
+    "tree_sha256": "7641ad0bfeb0672f47c31af69d1706d919189fbe8586479b3941820628900f78"
+  },
+  "predictions": {
+    "predictions": [
+      [
+        92,
+        5
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        67,
+        3
+      ],
+      [
+        27,
+        2
+      ],
+      [
+        189,
+        8
+      ],
+      [
+        86,
+        3
+      ],
+      [
+        67,
+        3
+      ],
+      [
+        86,
+        3
+      ],
+      [
+        92,
+        5
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        67,
+        3
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        189,
+        8
+      ],
+      [
+        92,
+        5
+      ],
+      [
+        51,
+        2
+      ],
+      [
+        45,
+        2
+      ],
+      [
+        67,
+        3
+      ],
+      [
+        51,
+        2
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        67,
+        3
+      ],
+      [
+        67,
+        3
+      ],
+      [
+        67,
+        3
+      ],
+      [
+        51,
+        5
+      ],
+      [
+        15,
+        1
+      ]
+    ],
+    "predictions_sha256": "3d37ab44c4d08497e44e7dd1168877a0a4e777fa5b6c2e0f361ab8ab91a7856b"
+  },
+  "metrics": {
+    "train_mse": [
+      6901,
+      8400
+    ],
+    "n_leaves": 22
+  }
+}

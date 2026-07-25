@@ -1,0 +1,182 @@
+[
+  {
+    "features": [
+      9,
+      6,
+      0,
+      0
+    ],
+    "target": 31
+  },
+  {
+    "features": [
+      9,
+      5,
+      8,
+      3
+    ],
+    "target": 23
+  },
+  {
+    "features": [
+      2,
+      0,
+      3,
+      2
+    ],
+    "target": 15
+  },
+  {
+    "features": [
+      8,
+      4,
+      3,
+      6
+    ],
+    "target": 24
+  },
+  {
+    "features": [
+      9,
+      6,
+      3,
+      3
+    ],
+    "target": 25
+  },
+  {
+    "features": [
+      6,
+      7,
+      7,
+      9
+    ],
+    "target": 18
+  },
+  {
+    "features": [
+      5,
+      0,
+      0,
+      0
+    ],
+    "target": 30
+  },
+  {
+    "features": [
+      5,
+      8,
+      0,
+      7
+    ],
+    "target": 25
+  },
+  {
+    "features": [
+      3,
+      0,
+      9,
+      5
+    ],
+    "target": 16
+  },
+  {
+    "features": [
+      5,
+      0,
+      5,
+      0
+    ],
+    "target": 25
+  },
+  {
+    "features": [
+      4,
+      8,
+      6,
+      9
+    ],
+    "target": 8
+  },
+  {
+    "features": [
+      7,
+      4,
+      0,
+      0
+    ],
+    "target": 30
+  },
+  {
+    "features": [
+      2,
+      6,
+      7,
+      8
+    ],
+    "target": 15
+  },
+  {
+    "features": [
+      7,
+      9,
+      8,
+      2
+    ],
+    "target": 19
+  },
+  {
+    "features": [
+      1,
+      1,
+      7,
+      2
+    ],
+    "target": 16
+  },
+  {
+    "features": [
+      0,
+      3,
+      1,
+      6
+    ],
+    "target": 20
+  },
+  {
+    "features": [
+      9,
+      8,
+      8,
+      5
+    ],
+    "target": 19
+  },
+  {
+    "features": [
+      4,
+      1,
+      9,
+      5
+    ],
+    "target": 15
+  },
+  {
+    "features": [
+      6,
+      6,
+      2,
+      0
+    ],
+    "target": 30
+  },
+  {
+    "features": [
+      4,
+      2,
+      1,
+      8
+    ],
+    "target": 22
+  }
+]

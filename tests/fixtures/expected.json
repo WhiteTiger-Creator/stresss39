@@ -1,0 +1,245 @@
+{
+  "model": {
+    "tree": {
+      "type": "split",
+      "feature": 0,
+      "threshold": 4,
+      "n_samples": 60,
+      "left": {
+        "type": "split",
+        "feature": 2,
+        "threshold": 2,
+        "n_samples": 24,
+        "left": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 6,
+          "n_samples": 12,
+          "left": {
+            "type": "leaf",
+            "value": [
+              125,
+              6
+            ],
+            "n_samples": 6
+          },
+          "right": {
+            "type": "leaf",
+            "value": [
+              91,
+              6
+            ],
+            "n_samples": 6
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 6,
+          "n_samples": 12,
+          "left": {
+            "type": "leaf",
+            "value": [
+              121,
+              8
+            ],
+            "n_samples": 8
+          },
+          "right": {
+            "type": "leaf",
+            "value": [
+              35,
+              4
+            ],
+            "n_samples": 4
+          }
+        }
+      },
+      "right": {
+        "type": "split",
+        "feature": 2,
+        "threshold": 2,
+        "n_samples": 36,
+        "left": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 5,
+          "n_samples": 14,
+          "left": {
+            "type": "split",
+            "feature": 3,
+            "threshold": 3,
+            "n_samples": 8,
+            "left": {
+              "type": "leaf",
+              "value": [
+                88,
+                3
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                154,
+                5
+              ],
+              "n_samples": 5
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 1,
+            "n_samples": 6,
+            "left": {
+              "type": "leaf",
+              "value": [
+                74,
+                3
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                23,
+                1
+              ],
+              "n_samples": 3
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 6,
+          "n_samples": 22,
+          "left": {
+            "type": "split",
+            "feature": 3,
+            "threshold": 4,
+            "n_samples": 17,
+            "left": {
+              "type": "leaf",
+              "value": [
+                189,
+                8
+              ],
+              "n_samples": 8
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                221,
+                9
+              ],
+              "n_samples": 9
+            }
+          },
+          "right": {
+            "type": "leaf",
+            "value": [
+              18,
+              1
+            ],
+            "n_samples": 5
+          }
+        }
+      }
+    },
+    "tree_sha256": "66bf576cea5063eeee5eb7d65426426e3d52f2c888b354a2b22edc9fd35d42d3"
+  },
+  "predictions": {
+    "predictions": [
+      [
+        74,
+        3
+      ],
+      [
+        189,
+        8
+      ],
+      [
+        121,
+        8
+      ],
+      [
+        221,
+        9
+      ],
+      [
+        189,
+        8
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        88,
+        3
+      ],
+      [
+        74,
+        3
+      ],
+      [
+        121,
+        8
+      ],
+      [
+        189,
+        8
+      ],
+      [
+        35,
+        4
+      ],
+      [
+        88,
+        3
+      ],
+      [
+        121,
+        8
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        121,
+        8
+      ],
+      [
+        125,
+        6
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        121,
+        8
+      ],
+      [
+        23,
+        1
+      ],
+      [
+        125,
+        6
+      ]
+    ],
+    "predictions_sha256": "d500555edc486f7b2cdf2e82b1a74d73388626148565bf5c57811af8ac1bc710"
+  },
+  "metrics": {
+    "train_mse": [
+      2837,
+      5400
+    ],
+    "n_leaves": 11
+  }
+}

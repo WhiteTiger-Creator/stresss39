@@ -1,0 +1,9 @@
+{
+  "max_depth": 5,
+  "min_samples_split": 4,
+  "min_samples_leaf": 2,
+  "min_impurity_decrease": [
+    1,
+    80
+  ]
+}
