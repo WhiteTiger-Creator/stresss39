@@ -1,8 +1,10 @@
 """Reference CART regression-tree learner with exact rational arithmetic.
 
-Implements the algorithm pinned in /app/docs/tree_spec.md. All impurity and leaf
-arithmetic uses fractions.Fraction so the model, predictions and metrics are
-bit-exact and independent of floating-point order of operations.
+Implements the algorithm pinned in /app/docs/tree_spec.md. All impurity, leaf and
+pruning arithmetic uses fractions.Fraction so the model, predictions and metrics
+are bit-exact and independent of floating-point order of operations. The tree is
+grown by weighted-impurity-decrease CART and then reduced by minimal
+cost-complexity (weakest-link) pruning.
 """
 
 from __future__ import annotations
@@ -80,6 +82,9 @@ class Builder:
         return best
 
     def build(self, idx: list[int], depth: int) -> dict:
+        # Every node carries its training-row indices ("_idx") so the pruning pass
+        # can compute node cost and collapsed leaf values; indices are stripped
+        # before serialization.
         targets = [self.rows[i]["target"] for i in idx]
         impurity = _impurity(targets)
         node_n = len(idx)
@@ -87,6 +92,7 @@ class Builder:
             "type": "leaf",
             "value": _frac_pair(_mean(targets)),
             "n_samples": node_n,
+            "_idx": idx,
         }
         if (
             depth >= self.max_depth
@@ -105,7 +111,87 @@ class Builder:
             "n_samples": node_n,
             "left": self.build(left, depth + 1),
             "right": self.build(right, depth + 1),
+            "_idx": idx,
         }
+
+
+def _node_cost(rows: list[dict], n_total: int, node: dict) -> Fraction:
+    """Weighted resubstitution cost of making this node a leaf: (n_t / N) * I(t)."""
+    idx = node["_idx"]
+    return Fraction(len(idx), n_total) * _impurity([rows[i]["target"] for i in idx])
+
+
+def _subtree_cost(rows: list[dict], n_total: int, node: dict) -> Fraction:
+    if node["type"] == "leaf":
+        return _node_cost(rows, n_total, node)
+    return (_subtree_cost(rows, n_total, node["left"])
+            + _subtree_cost(rows, n_total, node["right"]))
+
+
+def _subtree_leaves(node: dict) -> int:
+    if node["type"] == "leaf":
+        return 1
+    return _subtree_leaves(node["left"]) + _subtree_leaves(node["right"])
+
+
+def _internal_nodes_preorder(node: dict, counter: list[int]) -> list[tuple[int, dict]]:
+    """Pre-order walk (root, then left subtree, then right subtree) collecting
+    internal nodes paired with their pre-order index (used for the tie-break)."""
+    idx = counter[0]
+    counter[0] += 1
+    if node["type"] == "leaf":
+        return []
+    found = [(idx, node)]
+    found += _internal_nodes_preorder(node["left"], counter)
+    found += _internal_nodes_preorder(node["right"], counter)
+    return found
+
+
+def _collapse(rows: list[dict], node: dict) -> None:
+    """Turn an internal node into a leaf holding the exact mean of its rows."""
+    idx = node["_idx"]
+    targets = [rows[i]["target"] for i in idx]
+    node.clear()
+    node["type"] = "leaf"
+    node["value"] = _frac_pair(_mean(targets))
+    node["n_samples"] = len(idx)
+    node["_idx"] = idx
+
+
+def prune_ccp(rows: list[dict], n_total: int, root: dict, ccp_alpha: Fraction) -> dict:
+    """Minimal cost-complexity (weakest-link) pruning. Repeatedly collapse the
+    internal node with the smallest effective alpha g(t) = (R(t) - R(T_t)) /
+    (leaves(T_t) - 1) while that minimum is <= ccp_alpha; ties are broken by the
+    lowest pre-order index."""
+    while True:
+        internals = _internal_nodes_preorder(root, [0])
+        if not internals:
+            break
+        scored = []  # (g, preorder_index, node)
+        for pidx, node in internals:
+            r_t = _node_cost(rows, n_total, node)
+            r_subtree = _subtree_cost(rows, n_total, node)
+            leaves = _subtree_leaves(node)
+            g = (r_t - r_subtree) / (leaves - 1)
+            scored.append((g, pidx, node))
+        g_min = min(g for g, _, _ in scored)
+        if g_min > ccp_alpha:
+            break
+        # Weakest link: collapse the min-g node, tie-broken by lowest pre-order index.
+        _, _, victim = min(
+            ((g, pidx, node) for g, pidx, node in scored if g == g_min),
+            key=lambda t: t[1],
+        )
+        _collapse(rows, victim)
+    return root
+
+
+def _strip_idx(node: dict) -> dict:
+    node.pop("_idx", None)
+    if node["type"] == "split":
+        _strip_idx(node["left"])
+        _strip_idx(node["right"])
+    return node
 
 
 def _predict(tree: dict, features: list[int]) -> Fraction:
@@ -113,6 +199,12 @@ def _predict(tree: dict, features: list[int]) -> Fraction:
     while node["type"] == "split":
         node = node["left"] if features[node["feature"]] <= node["threshold"] else node["right"]
     return Fraction(node["value"][0], node["value"][1])
+
+
+def _count_leaves(tree: dict) -> int:
+    if tree["type"] == "leaf":
+        return 1
+    return _count_leaves(tree["left"]) + _count_leaves(tree["right"])
 
 
 def main() -> None:
@@ -126,7 +218,12 @@ def main() -> None:
     test = json.loads((data / "test.json").read_text())
     config = json.loads((data / "config.json").read_text())
 
-    tree = Builder(train, config).build(list(range(len(train))), 0)
+    ccp = config["ccp_alpha"]
+    ccp_alpha = Fraction(int(ccp[0]), int(ccp[1]))
+
+    grown = Builder(train, config).build(list(range(len(train))), 0)
+    pruned = prune_ccp(train, len(train), grown, ccp_alpha)
+    tree = _strip_idx(pruned)
     model = {"tree": tree, "tree_sha256": _sha(tree)}
 
     preds = [_predict(tree, row["features"]) for row in test]
@@ -144,12 +241,6 @@ def main() -> None:
     (output / "predictions.json").write_text(json.dumps(predictions, indent=2) + "\n")
     (output / "metrics.json").write_text(json.dumps(metrics, indent=2) + "\n")
     print(f"fit tree with {metrics['n_leaves']} leaves")
-
-
-def _count_leaves(tree: dict) -> int:
-    if tree["type"] == "leaf":
-        return 1
-    return _count_leaves(tree["left"]) + _count_leaves(tree["right"])
 
 
 if __name__ == "__main__":

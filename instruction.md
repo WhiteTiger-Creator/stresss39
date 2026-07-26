@@ -10,9 +10,11 @@ directory and writes `model.json`, `predictions.json` and `metrics.json` to the 
 
 The exact learning algorithm — the mean-squared-error impurity, the greedy split search and the
 weighted impurity-decrease criterion that governs it, the validity and eligibility rules, the
-tie-breaking order, the stopping conditions, the leaf values, the JSON node shapes, and the
-canonical SHA-256 hashing used for the checksums — is defined in full in
-`/app/docs/tree_spec.md`. Follow it exactly.
+tie-breaking order, the stopping conditions, the leaf values, the minimal cost-complexity
+(weakest-link) pruning pass that reduces the grown tree under `ccp_alpha`, the JSON node shapes
+(where `threshold` is a plain integer, not a rational pair), and the canonical SHA-256 hashing
+used for the checksums — is defined in full in `/app/docs/tree_spec.md`. Follow it exactly; the
+tree is grown first and then pruned, and both passes feed the final model, predictions and metrics.
 
 Every quantity the model reports (leaf values, predictions, and the training MSE) is an **exact
 rational number** emitted as `[numerator, denominator]` in lowest terms, so your arithmetic must
