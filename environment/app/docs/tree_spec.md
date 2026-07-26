@@ -13,8 +13,9 @@ required `[numerator, denominator]` output.
   the same number of features `F`.
 - `test.json` — the same shape; `target` is present but is not used to make predictions.
 - `config.json` — `{"max_depth": int, "min_samples_split": int, "min_samples_leaf": int,
-  "min_impurity_decrease": [num, den], "ccp_alpha": [num, den]}`. `min_impurity_decrease`
-  governs growth and `ccp_alpha` governs pruning; both are exact rationals `num/den`.
+  "max_leaf_nodes": int, "min_impurity_decrease": [num, den], "ccp_alpha": [num, den]}`.
+  `max_leaf_nodes` caps the number of leaves during best-first growth, `min_impurity_decrease`
+  gates each split, and `ccp_alpha` governs pruning; the last two are exact rationals `num/den`.
 
 `N` denotes the number of training rows (the sample count at the root).
 
@@ -29,30 +30,40 @@ impurity  = (sum of (y_i - mean)^2) / n           # exact rational
 
 ## Growing the tree
 
-Grow recursively starting from the root, which holds all training rows at depth 0. At a node
-holding `n_t` rows with impurity `I`:
+The tree is grown **best-first** up to a budget of `max_leaf_nodes` leaves. First define, for any
+node holding `n_t` rows at some depth with impurity `I`, its **best eligible split**:
 
-1. Make the node a **leaf** (see below) if any of these hold: `depth >= max_depth`;
+1. The node cannot be split (it is a permanent leaf) if any of these hold: `depth >= max_depth`;
    `n_t < min_samples_split`; or `I == 0`.
-2. Otherwise consider every candidate split. For each feature index `f` in `0..F-1`, let the
-   candidate thresholds be the sorted distinct values of feature `f` over the node's rows, **with
-   the largest value excluded**. A split with threshold `t` sends every row whose `features[f] <= t`
-   to the left child and all remaining rows to the right child.
+2. Otherwise consider every candidate split. For each feature index `f` in `0..F-1`, the candidate
+   thresholds are the sorted distinct values of feature `f` over the node's rows, **with the largest
+   value excluded** (a threshold is a raw feature value, never a midpoint). A split with threshold
+   `t` sends every row whose `features[f] <= t` to the left child and the rest to the right child.
 3. A candidate is **valid** only if both children have at least `min_samples_leaf` rows.
-4. For a valid candidate, compute the weighted impurity decrease:
+4. For a valid candidate, the weighted impurity decrease is
 
    ```
    decrease = (n_t / N) * ( I - (n_left / n_t) * I_left - (n_right / n_t) * I_right )
    ```
 
-   All terms are exact rationals. **Note the `n_t / N` factor**: the decrease is scaled by the
-   node's share of the *whole* training set `N`, not just of the node — the same split shape is
-   worth less deeper in the tree.
+   with all terms exact rationals. **Note the `n_t / N` factor**: the decrease is scaled by the
+   node's share of the *whole* training set `N`, so the same split shape is worth less deeper in the
+   tree.
 5. A candidate is **eligible** only if `decrease >= min_impurity_decrease`.
-6. Among eligible candidates pick the one with the **largest** `decrease`. Break ties by the
-   **lowest feature index**, then by the **lowest threshold**.
-7. If there is no eligible candidate, make the node a leaf. Otherwise split on the chosen
-   `(feature, threshold)` and recurse into the left and right children at `depth + 1`.
+6. The node's best split is the eligible candidate with the **largest** `decrease`, ties broken by
+   the **lowest feature index** then the **lowest threshold**. If no candidate is eligible, the node
+   is a permanent leaf.
+
+Then grow best-first. Start with the root (all training rows, depth 0) as the only leaf. While the
+tree has fewer than `max_leaf_nodes` leaves **and** at least one current leaf has an eligible best
+split, take the leaf **whose best split has the largest `decrease`** and split it: it becomes an
+internal node whose left and right children — the split's two row sets at `depth + 1` — are new
+leaves, raising the leaf count by exactly one. Break ties on the `decrease` by the
+**earliest-created node**, assigning every node a creation index in the order nodes are made: the
+root first, then, at each split, the left child before the right child. Stop when the tree reaches
+`max_leaf_nodes` leaves, or when no remaining leaf has an eligible split. This best-first order is
+part of the contract: a depth-first tree that expands one branch fully before moving on keeps a
+different set of splits once the leaf budget binds.
 
 ## Leaf value
 
@@ -61,7 +72,7 @@ lowest terms (an integer `k` is `[k, 1]`).
 
 ## Cost-complexity pruning
 
-Growth (`min_impurity_decrease`) happens first; then the fully grown tree is reduced by **minimal
+Growth (best-first under `max_leaf_nodes` and `min_impurity_decrease`) happens first; then the grown tree is reduced by **minimal
 cost-complexity (weakest-link) pruning** governed by the exact rational `ccp_alpha`. Define, over
 exact rationals:
 

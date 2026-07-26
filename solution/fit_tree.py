@@ -51,6 +51,7 @@ class Builder:
         self.min_samples_leaf = int(config["min_samples_leaf"])
         mid = config["min_impurity_decrease"]
         self.min_impurity_decrease = Fraction(int(mid[0]), int(mid[1]))
+        self.max_leaf_nodes = int(config["max_leaf_nodes"])
 
     def _best_split(self, idx: list[int], impurity: Fraction):
         n_t = len(idx)
@@ -80,6 +81,69 @@ class Builder:
                 ):
                     best = cand
         return best
+
+    def _make_node(self, idx: list[int], depth: int, cidx: int):
+        """Create a leaf node plus its best eligible split (or None if it is a
+        permanent leaf under the depth / min_samples / impurity / eligibility rules)."""
+        targets = [self.rows[i]["target"] for i in idx]
+        impurity = _impurity(targets)
+        node = {
+            "type": "leaf",
+            "value": _frac_pair(_mean(targets)),
+            "n_samples": len(idx),
+            "_idx": idx,
+            "_depth": depth,
+            "_cidx": cidx,
+        }
+        split = None
+        if not (depth >= self.max_depth or len(idx) < self.min_samples_split or impurity == 0):
+            split = self._best_split(idx, impurity)
+        return node, split
+
+    def build_best_first(self, idx: list[int]) -> dict:
+        """Best-first (leaf-budgeted) growth, matching sklearn's BestFirstTreeBuilder.
+
+        The frontier of splittable leaves is expanded highest-impurity-decrease first
+        until `max_leaf_nodes` leaves exist. Ties on the decrease are broken by the
+        earliest-created node (lowest creation index; the left child is created before
+        the right). A depth-first tree, which ignores this global ordering, keeps a
+        different set of splits once the leaf budget binds.
+        """
+        counter = [0]
+        root, root_split = self._make_node(idx, 0, counter[0])
+        counter[0] += 1
+        frontier: list[tuple[dict, tuple]] = []
+        if root_split is not None:
+            frontier.append((root, root_split))
+        leaves = 1
+        while leaves < self.max_leaf_nodes and frontier:
+            best_i = max(
+                range(len(frontier)),
+                key=lambda i: (frontier[i][1][0], -frontier[i][0]["_cidx"]),
+            )
+            node, split = frontier.pop(best_i)
+            _, feature, threshold, left, right = split
+            node_idx, node_n, depth = node["_idx"], node["n_samples"], node["_depth"]
+            left_node, left_split = self._make_node(left, depth + 1, counter[0])
+            counter[0] += 1
+            right_node, right_split = self._make_node(right, depth + 1, counter[0])
+            counter[0] += 1
+            node.clear()
+            node.update({
+                "type": "split",
+                "feature": feature,
+                "threshold": threshold,
+                "n_samples": node_n,
+                "left": left_node,
+                "right": right_node,
+                "_idx": node_idx,
+            })
+            leaves += 1
+            if left_split is not None:
+                frontier.append((left_node, left_split))
+            if right_split is not None:
+                frontier.append((right_node, right_split))
+        return root
 
     def build(self, idx: list[int], depth: int) -> dict:
         # Every node carries its training-row indices ("_idx") so the pruning pass
@@ -188,6 +252,8 @@ def prune_ccp(rows: list[dict], n_total: int, root: dict, ccp_alpha: Fraction) -
 
 def _strip_idx(node: dict) -> dict:
     node.pop("_idx", None)
+    node.pop("_depth", None)
+    node.pop("_cidx", None)
     if node["type"] == "split":
         _strip_idx(node["left"])
         _strip_idx(node["right"])
@@ -221,7 +287,7 @@ def main() -> None:
     ccp = config["ccp_alpha"]
     ccp_alpha = Fraction(int(ccp[0]), int(ccp[1]))
 
-    grown = Builder(train, config).build(list(range(len(train))), 0)
+    grown = Builder(train, config).build_best_first(list(range(len(train))))
     pruned = prune_ccp(train, len(train), grown, ccp_alpha)
     tree = _strip_idx(pruned)
     model = {"tree": tree, "tree_sha256": _sha(tree)}

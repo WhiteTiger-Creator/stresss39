@@ -66,12 +66,26 @@
           "threshold": 6,
           "n_samples": 14,
           "left": {
-            "type": "leaf",
-            "value": [
-              30,
-              1
-            ],
-            "n_samples": 8
+            "type": "split",
+            "feature": 1,
+            "threshold": 3,
+            "n_samples": 8,
+            "left": {
+              "type": "leaf",
+              "value": [
+                86,
+                3
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                154,
+                5
+              ],
+              "n_samples": 5
+            }
           },
           "right": {
             "type": "leaf",
@@ -106,7 +120,7 @@
         }
       }
     },
-    "tree_sha256": "5b809e0f2d555cbfd89375c86291e3f39b5836180f30add652c651295d8afcc1"
+    "tree_sha256": "61fa27a5f0cf77639610153c3af11e9b5b7d7ebb8689a73ec29a0ffaa934c286"
   },
   "predictions": {
     "predictions": [
@@ -131,16 +145,16 @@
         13
       ],
       [
-        30,
-        1
+        86,
+        3
       ],
       [
         307,
         13
       ],
       [
-        30,
-        1
+        86,
+        3
       ],
       [
         125,
@@ -211,13 +225,13 @@
         5
       ]
     ],
-    "predictions_sha256": "d2d893927867a165330b9ead0de74b1fce9c4533630a7c0b054940b2d29ebef5"
+    "predictions_sha256": "768c96c744fc04457ea460c709272628a5fcacd743b973759c3a9842945b83ae"
   },
   "metrics": {
     "train_mse": [
-      3525713,
-      2102100
+      1089819,
+      700700
     ],
-    "n_leaves": 8
+    "n_leaves": 9
   }
 }

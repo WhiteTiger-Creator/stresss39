@@ -8,6 +8,7 @@
   ],
   "ccp_alpha": [
     1,
-    4
-  ]
+    10
+  ],
+  "max_leaf_nodes": 14
 }
