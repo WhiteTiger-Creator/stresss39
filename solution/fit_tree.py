@@ -49,9 +49,11 @@ class Builder:
         self.max_depth = int(config["max_depth"])
         self.min_samples_split = int(config["min_samples_split"])
         self.min_samples_leaf = int(config["min_samples_leaf"])
-        mid = config["min_impurity_decrease"]
+        mid = config.get("min_impurity_decrease", [0, 1])
         self.min_impurity_decrease = Fraction(int(mid[0]), int(mid[1]))
-        self.max_leaf_nodes = int(config["max_leaf_nodes"])
+        # Defensive default: an absent max_leaf_nodes means unbounded best-first growth,
+        # so a partial config never crashes the learner (the shipped config sets it).
+        self.max_leaf_nodes = int(config.get("max_leaf_nodes", 10**9))
 
     def _best_split(self, idx: list[int], impurity: Fraction):
         n_t = len(idx)
@@ -284,7 +286,7 @@ def main() -> None:
     test = json.loads((data / "test.json").read_text())
     config = json.loads((data / "config.json").read_text())
 
-    ccp = config["ccp_alpha"]
+    ccp = config.get("ccp_alpha", [0, 1])
     ccp_alpha = Fraction(int(ccp[0]), int(ccp[1]))
 
     grown = Builder(train, config).build_best_first(list(range(len(train))))
