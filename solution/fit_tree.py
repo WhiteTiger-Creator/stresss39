@@ -1,10 +1,13 @@
 """Reference CART regression-tree learner with exact rational arithmetic.
 
-Implements the algorithm pinned in /app/docs/tree_spec.md. All impurity, leaf and
-pruning arithmetic uses fractions.Fraction so the model, predictions and metrics
-are bit-exact and independent of floating-point order of operations. The tree is
-grown by weighted-impurity-decrease CART and then reduced by minimal
-cost-complexity (weakest-link) pruning.
+Implements the ratified learning decisions in /app/docs/model_review_log.md against
+the I/O contract in /app/docs/tree_spec.md. All impurity, leaf and pruning arithmetic
+uses fractions.Fraction so the model, predictions and metrics are bit-exact and
+independent of floating-point order of operations. The tree is grown by
+weighted-impurity-decrease best-first CART and then reduced by minimal cost-complexity
+(weakest-link) pruning. Per the review log's later-dated revisions, split thresholds are
+the upper boundary value with a strict `<` routing test, and each leaf reports the
+MEDIAN of its rows' targets (the split and pruning criteria stay mean-based MSE).
 """
 
 from __future__ import annotations
@@ -23,6 +26,18 @@ def _frac_pair(value: Fraction) -> list[int]:
 
 def _mean(targets: list[int]) -> Fraction:
     return Fraction(sum(targets), len(targets))
+
+
+def _leaf_value(targets: list[int]) -> Fraction:
+    # Leaf prediction is the exact MEDIAN of the node's training targets (the
+    # board's robust-leaf decision), not the mean. For an even count it is the
+    # exact rational average of the two central order statistics.
+    ordered = sorted(targets)
+    n = len(ordered)
+    mid = n // 2
+    if n % 2 == 1:
+        return Fraction(ordered[mid])
+    return Fraction(ordered[mid - 1] + ordered[mid], 2)
 
 
 def _impurity(targets: list[int]) -> Fraction:
@@ -62,10 +77,10 @@ class Builder:
         best = None  # (decrease, feature, threshold, left_idx, right_idx)
         for feature in range(self.n_features):
             values = sorted({self.rows[i]["features"][feature] for i in idx})
-            for threshold in values[:-1]:
+            for threshold in values[1:]:
                 left, right = [], []
                 for i in idx:
-                    (left if self.rows[i]["features"][feature] <= threshold else right).append(i)
+                    (left if self.rows[i]["features"][feature] < threshold else right).append(i)
                 if len(left) < self.min_samples_leaf or len(right) < self.min_samples_leaf:
                     continue
                 left_imp = _impurity([self.rows[i]["target"] for i in left])
@@ -91,7 +106,7 @@ class Builder:
         impurity = _impurity(targets)
         node = {
             "type": "leaf",
-            "value": _frac_pair(_mean(targets)),
+            "value": _frac_pair(_leaf_value(targets)),
             "n_samples": len(idx),
             "_idx": idx,
             "_depth": depth,
@@ -156,7 +171,7 @@ class Builder:
         node_n = len(idx)
         leaf = {
             "type": "leaf",
-            "value": _frac_pair(_mean(targets)),
+            "value": _frac_pair(_leaf_value(targets)),
             "n_samples": node_n,
             "_idx": idx,
         }
@@ -219,7 +234,7 @@ def _collapse(rows: list[dict], node: dict) -> None:
     targets = [rows[i]["target"] for i in idx]
     node.clear()
     node["type"] = "leaf"
-    node["value"] = _frac_pair(_mean(targets))
+    node["value"] = _frac_pair(_leaf_value(targets))
     node["n_samples"] = len(idx)
     node["_idx"] = idx
 
@@ -265,7 +280,7 @@ def _strip_idx(node: dict) -> dict:
 def _predict(tree: dict, features: list[int]) -> Fraction:
     node = tree
     while node["type"] == "split":
-        node = node["left"] if features[node["feature"]] <= node["threshold"] else node["right"]
+        node = node["left"] if features[node["feature"]] < node["threshold"] else node["right"]
     return Fraction(node["value"][0], node["value"][1])
 
 

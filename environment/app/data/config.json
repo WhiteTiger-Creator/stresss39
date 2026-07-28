@@ -7,8 +7,8 @@
     50
   ],
   "ccp_alpha": [
-    2,
-    1
+    1,
+    8
   ],
   "max_leaf_nodes": 8
 }

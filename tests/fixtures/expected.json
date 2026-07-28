@@ -8,168 +8,228 @@
       "left": {
         "type": "split",
         "feature": 2,
-        "threshold": 2,
-        "n_samples": 24,
+        "threshold": 4,
+        "n_samples": 23,
         "left": {
           "type": "leaf",
           "value": [
-            18,
+            17,
             1
           ],
-          "n_samples": 12
+          "n_samples": 10
         },
         "right": {
-          "type": "leaf",
-          "value": [
-            13,
-            1
-          ],
-          "n_samples": 12
+          "type": "split",
+          "feature": 3,
+          "threshold": 4,
+          "n_samples": 13,
+          "left": {
+            "type": "leaf",
+            "value": [
+              25,
+              1
+            ],
+            "n_samples": 6
+          },
+          "right": {
+            "type": "leaf",
+            "value": [
+              28,
+              1
+            ],
+            "n_samples": 7
+          }
         }
       },
       "right": {
         "type": "split",
-        "feature": 2,
-        "threshold": 2,
-        "n_samples": 36,
+        "feature": 1,
+        "threshold": 8,
+        "n_samples": 37,
         "left": {
           "type": "split",
-          "feature": 1,
-          "threshold": 5,
-          "n_samples": 14,
+          "feature": 2,
+          "threshold": 4,
+          "n_samples": 30,
           "left": {
-            "type": "leaf",
-            "value": [
-              121,
-              4
-            ],
-            "n_samples": 8
+            "type": "split",
+            "feature": 1,
+            "threshold": 6,
+            "n_samples": 13,
+            "left": {
+              "type": "leaf",
+              "value": [
+                28,
+                1
+              ],
+              "n_samples": 10
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                32,
+                1
+              ],
+              "n_samples": 3
+            }
           },
           "right": {
-            "type": "leaf",
-            "value": [
-              143,
-              6
-            ],
-            "n_samples": 6
+            "type": "split",
+            "feature": 3,
+            "threshold": 6,
+            "n_samples": 17,
+            "left": {
+              "type": "leaf",
+              "value": [
+                32,
+                1
+              ],
+              "n_samples": 11
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                71,
+                2
+              ],
+              "n_samples": 6
+            }
           }
         },
         "right": {
-          "type": "split",
-          "feature": 1,
-          "threshold": 6,
-          "n_samples": 22,
-          "left": {
-            "type": "leaf",
-            "value": [
-              410,
-              17
-            ],
-            "n_samples": 17
-          },
-          "right": {
-            "type": "leaf",
-            "value": [
-              18,
-              1
-            ],
-            "n_samples": 5
-          }
+          "type": "leaf",
+          "value": [
+            38,
+            1
+          ],
+          "n_samples": 7
         }
       }
     },
-    "tree_sha256": "c5113a03775216cdb1e7166d192aee21731a846b381054dc532242adb3966e5a"
+    "tree_sha256": "9cdf21d672d0027b1a3c8cb810f08b1c21e5c357140c3670d2860c7c45835b4d"
   },
   "predictions": {
     "predictions": [
       [
-        143,
-        6
-      ],
-      [
-        410,
-        17
-      ],
-      [
-        13,
+        32,
         1
       ],
       [
-        410,
-        17
-      ],
-      [
-        410,
-        17
-      ],
-      [
-        18,
+        17,
         1
       ],
       [
-        121,
-        4
-      ],
-      [
-        143,
-        6
-      ],
-      [
-        13,
+        38,
         1
       ],
       [
-        410,
-        17
-      ],
-      [
-        13,
+        25,
         1
       ],
       [
-        121,
-        4
-      ],
-      [
-        13,
+        28,
         1
       ],
       [
-        18,
+        28,
         1
       ],
       [
-        13,
+        28,
         1
       ],
       [
-        18,
+        38,
         1
       ],
       [
-        18,
+        28,
         1
       ],
       [
-        13,
+        25,
         1
       ],
       [
-        143,
-        6
+        17,
+        1
       ],
       [
-        18,
+        25,
+        1
+      ],
+      [
+        32,
+        1
+      ],
+      [
+        25,
+        1
+      ],
+      [
+        28,
+        1
+      ],
+      [
+        32,
+        1
+      ],
+      [
+        17,
+        1
+      ],
+      [
+        32,
+        1
+      ],
+      [
+        25,
+        1
+      ],
+      [
+        28,
+        1
+      ],
+      [
+        25,
+        1
+      ],
+      [
+        38,
+        1
+      ],
+      [
+        71,
+        2
+      ],
+      [
+        71,
+        2
+      ],
+      [
+        38,
+        1
+      ],
+      [
+        28,
+        1
+      ],
+      [
+        38,
+        1
+      ],
+      [
+        32,
         1
       ]
     ],
-    "predictions_sha256": "6da036d24ccb01c74f9acbbb2042c6e756cf4b1de3bc45a4a2a18b4db459d7b5"
+    "predictions_sha256": "849ad13a123512565432b8e03d6c99ae7da2ae68c182e34744f3913ddf75446d"
   },
   "metrics": {
     "train_mse": [
-      12653,
-      3060
+      277,
+      120
     ],
-    "n_leaves": 6
+    "n_leaves": 8
   }
 }

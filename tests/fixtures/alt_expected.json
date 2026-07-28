@@ -3,86 +3,72 @@
     "tree": {
       "type": "split",
       "feature": 0,
-      "threshold": 4,
-      "n_samples": 70,
+      "threshold": 6,
+      "n_samples": 72,
       "left": {
         "type": "split",
         "feature": 2,
-        "threshold": 2,
-        "n_samples": 36,
+        "threshold": 6,
+        "n_samples": 40,
         "left": {
           "type": "split",
-          "feature": 1,
-          "threshold": 6,
-          "n_samples": 14,
+          "feature": 3,
+          "threshold": 9,
+          "n_samples": 19,
           "left": {
             "type": "leaf",
             "value": [
-              223,
-              11
+              43,
+              2
             ],
-            "n_samples": 11
+            "n_samples": 14
           },
           "right": {
             "type": "leaf",
             "value": [
-              15,
+              23,
               1
             ],
-            "n_samples": 3
+            "n_samples": 5
           }
         },
         "right": {
           "type": "split",
-          "feature": 1,
-          "threshold": 5,
-          "n_samples": 22,
-          "left": {
-            "type": "leaf",
-            "value": [
-              72,
-              5
-            ],
-            "n_samples": 15
-          },
-          "right": {
-            "type": "leaf",
-            "value": [
-              69,
-              7
-            ],
-            "n_samples": 7
-          }
-        }
-      },
-      "right": {
-        "type": "split",
-        "feature": 2,
-        "threshold": 2,
-        "n_samples": 34,
-        "left": {
-          "type": "split",
-          "feature": 1,
-          "threshold": 6,
-          "n_samples": 14,
+          "feature": 0,
+          "threshold": 3,
+          "n_samples": 21,
           "left": {
             "type": "split",
-            "feature": 1,
-            "threshold": 3,
-            "n_samples": 8,
+            "feature": 3,
+            "threshold": 6,
+            "n_samples": 11,
             "left": {
-              "type": "leaf",
-              "value": [
-                86,
-                3
-              ],
-              "n_samples": 3
+              "type": "split",
+              "feature": 1,
+              "threshold": 6,
+              "n_samples": 6,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  24,
+                  1
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  28,
+                  1
+                ],
+                "n_samples": 3
+              }
             },
             "right": {
               "type": "leaf",
               "value": [
-                154,
-                5
+                28,
+                1
               ],
               "n_samples": 5
             }
@@ -90,148 +76,232 @@
           "right": {
             "type": "leaf",
             "value": [
-              145,
-              6
+              29,
+              1
             ],
-            "n_samples": 6
+            "n_samples": 10
+          }
+        }
+      },
+      "right": {
+        "type": "split",
+        "feature": 2,
+        "threshold": 6,
+        "n_samples": 32,
+        "left": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 6,
+          "n_samples": 16,
+          "left": {
+            "type": "leaf",
+            "value": [
+              27,
+              1
+            ],
+            "n_samples": 7
+          },
+          "right": {
+            "type": "leaf",
+            "value": [
+              34,
+              1
+            ],
+            "n_samples": 9
           }
         },
         "right": {
           "type": "split",
           "feature": 1,
           "threshold": 6,
-          "n_samples": 20,
+          "n_samples": 16,
           "left": {
-            "type": "leaf",
-            "value": [
-              307,
-              13
-            ],
-            "n_samples": 13
+            "type": "split",
+            "feature": 3,
+            "threshold": 6,
+            "n_samples": 10,
+            "left": {
+              "type": "leaf",
+              "value": [
+                32,
+                1
+              ],
+              "n_samples": 5
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 9,
+              "n_samples": 5,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  37,
+                  1
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  67,
+                  2
+                ],
+                "n_samples": 2
+              }
+            }
           },
           "right": {
-            "type": "leaf",
-            "value": [
-              125,
-              7
-            ],
-            "n_samples": 7
+            "type": "split",
+            "feature": 3,
+            "threshold": 6,
+            "n_samples": 6,
+            "left": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 9,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  36,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  39,
+                  1
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                40,
+                1
+              ],
+              "n_samples": 2
+            }
           }
         }
       }
     },
-    "tree_sha256": "61fa27a5f0cf77639610153c3af11e9b5b7d7ebb8689a73ec29a0ffaa934c286"
+    "tree_sha256": "7a7039cb7ff3743c8c0afd0c3a0d33d2d1430a84bc03876f552d83e42756aa6f"
   },
   "predictions": {
     "predictions": [
       [
-        125,
-        7
+        43,
+        2
       ],
       [
-        15,
+        29,
         1
       ],
       [
-        307,
-        13
+        32,
+        1
       ],
       [
-        72,
-        5
+        43,
+        2
       ],
       [
-        307,
-        13
+        43,
+        2
       ],
       [
-        86,
-        3
+        67,
+        2
       ],
       [
-        307,
-        13
+        34,
+        1
       ],
       [
-        86,
-        3
+        27,
+        1
       ],
       [
-        125,
-        7
+        43,
+        2
       ],
       [
-        72,
-        5
+        40,
+        1
       ],
       [
-        69,
-        7
+        27,
+        1
       ],
       [
-        307,
-        13
+        27,
+        1
       ],
       [
-        223,
-        11
+        43,
+        2
       ],
       [
-        307,
-        13
+        32,
+        1
       ],
       [
-        125,
-        7
+        67,
+        2
       ],
       [
-        145,
-        6
+        32,
+        1
       ],
       [
-        145,
-        6
+        24,
+        1
       ],
       [
-        307,
-        13
+        43,
+        2
       ],
       [
-        145,
-        6
+        36,
+        1
       ],
       [
-        72,
-        5
+        43,
+        2
       ],
       [
-        307,
-        13
+        29,
+        1
       ],
       [
-        307,
-        13
+        32,
+        1
       ],
       [
-        307,
-        13
+        43,
+        2
       ],
       [
-        69,
-        7
+        29,
+        1
       ],
       [
-        72,
-        5
+        40,
+        1
       ]
     ],
-    "predictions_sha256": "768c96c744fc04457ea460c709272628a5fcacd743b973759c3a9842945b83ae"
+    "predictions_sha256": "1341a0d3267b2fe6855f1358babcc7f7bd5f336c8eeccaa2c3f92a1c87b4bf0a"
   },
   "metrics": {
     "train_mse": [
-      1089819,
-      700700
+      95,
+      72
     ],
-    "n_leaves": 9
+    "n_leaves": 14
   }
 }

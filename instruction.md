@@ -8,18 +8,26 @@ The program takes two optional flags, `--data-dir` (default `/app/data`) and `--
 (default `/app/output`). It reads `train.json`, `test.json` and `config.json` from the data
 directory and writes `model.json`, `predictions.json` and `metrics.json` to the output directory.
 
-The exact learning algorithm — the mean-squared-error impurity, the greedy split search and the
-weighted impurity-decrease criterion that governs it, the validity and eligibility rules, the
-tie-breaking order, the stopping conditions, the leaf values, the best-first, leaf-budgeted growth under `max_leaf_nodes`, the minimal cost-complexity
-(weakest-link) pruning pass that reduces the grown tree under `ccp_alpha`, the JSON node shapes
-(where `threshold` is a plain integer, not a rational pair), and the canonical SHA-256 hashing
-used for the checksums — is defined in full in `/app/docs/tree_spec.md`. Follow it exactly; the
-tree is grown first and then pruned, and both passes feed the final model, predictions and metrics.
+Two documents under `/app/docs` govern the task, and you must reconcile them:
+
+- `/app/docs/tree_spec.md` is the **I/O contract**: the files, the JSON node shapes, the
+  exact-rational `[numerator, denominator]` encoding, the canonical SHA-256 hashing, and the
+  determinism requirement. It is stable.
+- `/app/docs/model_review_log.md` is the **authoritative record of the learning algorithm**: the
+  impurity criterion, the candidate-split and threshold rules, the routing test, the
+  validity/eligibility gates, the tie-breaks, the best-first leaf-budgeted growth, the minimal
+  cost-complexity (weakest-link) pruning, and the leaf statistic. It is a dated engineering log in
+  which **several early decisions were later revised, and where entries conflict the later-dated
+  ratified entry is the one the reference model encodes.** Do not assume textbook CART defaults:
+  read the log to the end of each topic — at least two of the shipped conventions differ from the
+  usual ones, and an implementation that follows the first draft it sees will not match.
+
+The tree is grown first and then pruned; both passes feed the final `model.json`,
+`predictions.json` and `metrics.json`.
 
 Every quantity the model reports (leaf values, predictions, and the training MSE) is an **exact
-rational number** emitted as `[numerator, denominator]` in lowest terms, so your arithmetic must
-be exact rather than floating point. Two correct implementations produce byte-identical
-`model.json`, `predictions.json` and `metrics.json`, including the embedded checksums. The
-program must be deterministic (a rerun reproduces the same files) and must work on any dataset of
-the same shape, not just the shipped one — derive everything from the data and the config, and do
-not hardcode outputs.
+rational number** emitted as `[numerator, denominator]` in lowest terms, so your arithmetic must be
+exact rather than floating point. Two correct implementations produce byte-identical output,
+including the embedded checksums. The program must be deterministic (a rerun reproduces the same
+files) and must work on any dataset of the same shape, not just the shipped one — derive everything
+from the data, the config and the ratified decisions in the review log, and do not hardcode outputs.

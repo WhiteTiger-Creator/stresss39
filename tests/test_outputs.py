@@ -99,7 +99,7 @@ def _leaves(tree: dict) -> list[dict]:
 def _route(tree: dict, features: list[int]) -> list[int]:
     node = tree
     while node["type"] == "split":
-        node = node["left"] if features[node["feature"]] <= node["threshold"] else node["right"]
+        node = node["left"] if features[node["feature"]] < node["threshold"] else node["right"]
     return node["value"]
 
 
