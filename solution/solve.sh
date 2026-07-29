@@ -8,7 +8,7 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-cp "${SCRIPT_DIR}/fit_tree.py" /app/fit_tree.py
-chmod +x /app/fit_tree.py
+cp "${SCRIPT_DIR}/fit_forest.py" /app/fit_forest.py
+chmod +x /app/fit_forest.py
 
-python3 /app/fit_tree.py --data-dir /app/data --output-dir /app/output
+python3 /app/fit_forest.py --data-dir /app/data --output-dir /app/output

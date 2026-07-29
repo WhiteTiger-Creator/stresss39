@@ -1,4 +1,4 @@
-"""Verify the exact CART regression-tree learner at /app/fit_tree.py."""
+"""Verify the exact-seeded random-forest regressor at /app/fit_forest.py."""
 
 from __future__ import annotations
 
@@ -54,7 +54,8 @@ def _stage_dir(path: Path) -> Path:
     os.chmod(dst, 0o755)
     return dst
 
-CLI = Path("/app/fit_tree.py")
+
+CLI = Path("/app/fit_forest.py")
 DATA = Path("/app/data")
 OUTPUT = Path("/app/output")
 FIX = Path("/tests/fixtures")
@@ -96,11 +97,15 @@ def _leaves(tree: dict) -> list[dict]:
     return _leaves(tree["left"]) + _leaves(tree["right"])
 
 
-def _route(tree: dict, features: list[int]) -> list[int]:
+def _route(tree: dict, features: list[int]) -> Fraction:
     node = tree
     while node["type"] == "split":
-        node = node["left"] if features[node["feature"]] < node["threshold"] else node["right"]
-    return node["value"]
+        node = node["left"] if features[node["feature"]] <= node["threshold"] else node["right"]
+    return Fraction(node["value"][0], node["value"][1])
+
+
+def _forest_predict(trees: list[dict], features: list[int]) -> Fraction:
+    return sum((_route(t, features) for t in trees), Fraction(0)) / len(trees)
 
 
 @pytest.fixture(scope="module")
@@ -119,34 +124,34 @@ def metrics() -> dict:
 
 
 def test_cli_exists():
-    """The learner program exists at /app/fit_tree.py."""
-    assert CLI.exists(), "/app/fit_tree.py was not created"
+    """The learner program exists at /app/fit_forest.py."""
+    assert CLI.exists(), "/app/fit_forest.py was not created"
 
 
 def test_required_outputs_present():
-    """repair writes the three required output files."""
+    """The learner writes the three required output files."""
     for name in ("model.json", "predictions.json", "metrics.json"):
         assert (OUTPUT / name).exists(), f"missing output {name}"
 
 
 def test_model_matches_reference(model: dict):
-    """The fitted tree and its checksum match the exact reference model."""
+    """The fitted forest and its checksum match the exact reference model."""
     assert model == EXPECTED["model"]
 
 
 def test_predictions_match_reference(predictions: dict):
-    """The test-set predictions and their checksum match the exact reference."""
+    """The aggregated test-set predictions and their checksum match the exact reference."""
     assert predictions == EXPECTED["predictions"]
 
 
 def test_metrics_match_reference(metrics: dict):
-    """train_mse and n_leaves match the exact reference metrics."""
+    """train_mse, n_trees and total_leaves match the exact reference metrics."""
     assert metrics == EXPECTED["metrics"]
 
 
-def test_tree_checksum_self_consistent(model: dict):
-    """model.tree_sha256 is the canonical SHA-256 of the emitted tree."""
-    assert model["tree_sha256"] == _sha(model["tree"])
+def test_forest_checksum_self_consistent(model: dict):
+    """model.forest_sha256 is the canonical SHA-256 of the emitted trees array."""
+    assert model["forest_sha256"] == _sha(model["trees"])
 
 
 def test_predictions_checksum_self_consistent(predictions: dict):
@@ -154,17 +159,24 @@ def test_predictions_checksum_self_consistent(predictions: dict):
     assert predictions["predictions_sha256"] == _sha(predictions["predictions"])
 
 
+def test_n_trees_consistent(model: dict, metrics: dict):
+    """n_trees agrees across model and metrics and equals the number of emitted trees."""
+    assert model["n_trees"] == len(model["trees"]) == metrics["n_trees"]
+
+
 def test_leaf_values_are_lowest_terms(model: dict):
-    """Every leaf value is an exact rational [num, den] in lowest terms with den > 0."""
-    for leaf in _leaves(model["tree"]):
-        num, den = leaf["value"]
-        assert den > 0
-        assert gcd(abs(num), den) == 1
+    """Every leaf value across every tree is an exact rational [num, den] in lowest terms."""
+    for tree in model["trees"]:
+        for leaf in _leaves(tree):
+            num, den = leaf["value"]
+            assert den > 0
+            assert gcd(abs(num), den) == 1
 
 
 def test_node_sample_counts_consistent(model: dict):
-    """Each split's n_samples equals the sum of its children, and the root covers all rows."""
-    train = _load(DATA / "train.json")
+    """Within each tree every split's n_samples equals the sum of its children, and each tree's
+    root covers exactly N bootstrap rows (duplicates included)."""
+    n = len(_load(DATA / "train.json"))
 
     def check(node: dict) -> int:
         if node["type"] == "leaf":
@@ -173,28 +185,32 @@ def test_node_sample_counts_consistent(model: dict):
         assert node["n_samples"] == total
         return total
 
-    assert check(model["tree"]) == len(train)
+    for tree in model["trees"]:
+        assert check(tree) == n
 
 
-def test_predictions_follow_the_tree(model: dict, predictions: dict):
-    """Each prediction is exactly the value of the leaf the test row routes to."""
+def test_predictions_follow_the_forest(model: dict, predictions: dict):
+    """Each prediction is exactly the mean of the per-tree leaf values the test row routes to."""
     test = _load(DATA / "test.json")
-    routed = [_route(model["tree"], row["features"]) for row in test]
+    routed = []
+    for row in test:
+        p = _forest_predict(model["trees"], row["features"])
+        routed.append([p.numerator, p.denominator])
     assert routed == predictions["predictions"]
 
 
-def test_n_leaves_matches_tree(model: dict, metrics: dict):
-    """metrics.n_leaves equals the number of leaves in the tree."""
-    assert metrics["n_leaves"] == len(_leaves(model["tree"]))
+def test_total_leaves_matches(model: dict, metrics: dict):
+    """metrics.total_leaves equals the summed leaf count across all trees."""
+    assert metrics["total_leaves"] == sum(len(_leaves(t)) for t in model["trees"])
 
 
 def test_train_mse_recomputed(model: dict, metrics: dict):
-    """train_mse equals the exact mean squared training residual of the tree."""
+    """train_mse equals the exact mean squared training residual of the aggregated forest."""
     train = _load(DATA / "train.json")
     total = Fraction(0)
     for row in train:
-        num, den = _route(model["tree"], row["features"])
-        total += (Fraction(row["target"]) - Fraction(num, den)) ** 2
+        pred = _forest_predict(model["trees"], row["features"])
+        total += (Fraction(row["target"]) - pred) ** 2
     mse = total / len(train)
     assert metrics["train_mse"] == [mse.numerator, mse.denominator]
 

@@ -26,7 +26,7 @@ if [ "$(id -u)" = "0" ] && id "$CANDIDATE_USER" >/dev/null 2>&1; then
 
     # Establish the authoritative /app/output from an UNPRIVILEGED learner run.
     runuser -u "$CANDIDATE_USER" -- \
-        python3 /app/fit_tree.py --data-dir /app/data --output-dir /app/output \
+        python3 /app/fit_forest.py --data-dir /app/data --output-dir /app/output \
         >/logs/verifier/candidate_fit.log 2>&1 || true
 fi
 

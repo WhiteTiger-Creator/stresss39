@@ -1,90 +1,142 @@
 {
   "model": {
-    "tree": {
-      "type": "split",
-      "feature": 0,
-      "threshold": 4,
-      "n_samples": 60,
-      "left": {
+    "trees": [
+      {
         "type": "split",
-        "feature": 2,
-        "threshold": 4,
-        "n_samples": 23,
-        "left": {
-          "type": "leaf",
-          "value": [
-            17,
-            1
-          ],
-          "n_samples": 10
-        },
-        "right": {
-          "type": "split",
-          "feature": 3,
-          "threshold": 4,
-          "n_samples": 13,
-          "left": {
-            "type": "leaf",
-            "value": [
-              25,
-              1
-            ],
-            "n_samples": 6
-          },
-          "right": {
-            "type": "leaf",
-            "value": [
-              28,
-              1
-            ],
-            "n_samples": 7
-          }
-        }
-      },
-      "right": {
-        "type": "split",
-        "feature": 1,
+        "feature": 3,
         "threshold": 8,
-        "n_samples": 37,
+        "n_samples": 80,
         "left": {
           "type": "split",
-          "feature": 2,
+          "feature": 1,
           "threshold": 4,
-          "n_samples": 30,
+          "n_samples": 70,
           "left": {
             "type": "split",
-            "feature": 1,
-            "threshold": 6,
-            "n_samples": 13,
+            "feature": 4,
+            "threshold": 3,
+            "n_samples": 42,
             "left": {
-              "type": "leaf",
-              "value": [
-                28,
-                1
-              ],
-              "n_samples": 10
+              "type": "split",
+              "feature": 4,
+              "threshold": 1,
+              "n_samples": 18,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  223,
+                  8
+                ],
+                "n_samples": 8
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  323,
+                  10
+                ],
+                "n_samples": 10
+              }
             },
             "right": {
-              "type": "leaf",
-              "value": [
-                32,
-                1
-              ],
-              "n_samples": 3
+              "type": "split",
+              "feature": 3,
+              "threshold": 6,
+              "n_samples": 24,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  537,
+                  19
+                ],
+                "n_samples": 19
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  131,
+                  5
+                ],
+                "n_samples": 5
+              }
             }
           },
           "right": {
             "type": "split",
-            "feature": 3,
-            "threshold": 8,
-            "n_samples": 17,
+            "feature": 4,
+            "threshold": 3,
+            "n_samples": 28,
+            "left": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 7,
+              "n_samples": 11,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  212,
+                  7
+                ],
+                "n_samples": 7
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  27,
+                  1
+                ],
+                "n_samples": 4
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 4,
+              "n_samples": 17,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  199,
+                  6
+                ],
+                "n_samples": 12
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  203,
+                  5
+                ],
+                "n_samples": 5
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 4,
+          "threshold": 5,
+          "n_samples": 10,
+          "left": {
+            "type": "leaf",
+            "value": [
+              104,
+              3
+            ],
+            "n_samples": 3
+          },
+          "right": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 6,
+            "n_samples": 7,
             "left": {
               "type": "leaf",
               "value": [
-                32,
-                1
+                118,
+                3
               ],
-              "n_samples": 14
+              "n_samples": 3
             },
             "right": {
               "type": "leaf",
@@ -92,144 +144,2240 @@
                 37,
                 1
               ],
-              "n_samples": 3
+              "n_samples": 4
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 3,
+        "threshold": 7,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 0,
+          "threshold": 4,
+          "n_samples": 68,
+          "left": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 2,
+            "n_samples": 36,
+            "left": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 0,
+              "n_samples": 24,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  27,
+                  1
+                ],
+                "n_samples": 6
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  173,
+                  6
+                ],
+                "n_samples": 18
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 3,
+              "threshold": 0,
+              "n_samples": 12,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  131,
+                  5
+                ],
+                "n_samples": 5
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  27,
+                  1
+                ],
+                "n_samples": 7
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 6,
+            "n_samples": 32,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 6,
+              "n_samples": 26,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  321,
+                  10
+                ],
+                "n_samples": 20
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  35,
+                  1
+                ],
+                "n_samples": 6
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 8,
+              "n_samples": 6,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  149,
+                  4
+                ],
+                "n_samples": 4
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  42,
+                  1
+                ],
+                "n_samples": 2
+              }
             }
           }
         },
         "right": {
-          "type": "leaf",
-          "value": [
-            38,
-            1
-          ],
-          "n_samples": 7
+          "type": "split",
+          "feature": 0,
+          "threshold": 3,
+          "n_samples": 12,
+          "left": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 5,
+            "n_samples": 4,
+            "left": {
+              "type": "leaf",
+              "value": [
+                32,
+                1
+              ],
+              "n_samples": 2
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                37,
+                1
+              ],
+              "n_samples": 2
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 7,
+            "n_samples": 8,
+            "left": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 0,
+              "n_samples": 5,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  112,
+                  3
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  67,
+                  2
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                41,
+                1
+              ],
+              "n_samples": 3
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 3,
+        "threshold": 4,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 2,
+          "threshold": 5,
+          "n_samples": 45,
+          "left": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 4,
+            "n_samples": 32,
+            "left": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 4,
+              "n_samples": 21,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  426,
+                  17
+                ],
+                "n_samples": 17
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  29,
+                  1
+                ],
+                "n_samples": 4
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 4,
+              "n_samples": 11,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  119,
+                  4
+                ],
+                "n_samples": 4
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  242,
+                  7
+                ],
+                "n_samples": 7
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 3,
+            "n_samples": 13,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 1,
+              "n_samples": 5,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  28,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  30,
+                  1
+                ],
+                "n_samples": 3
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 2,
+              "n_samples": 8,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  61,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  235,
+                  6
+                ],
+                "n_samples": 6
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 0,
+          "threshold": 4,
+          "n_samples": 35,
+          "left": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 3,
+            "n_samples": 18,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 5,
+              "n_samples": 5,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  53,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  28,
+                  1
+                ],
+                "n_samples": 3
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 6,
+              "n_samples": 13,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  289,
+                  9
+                ],
+                "n_samples": 9
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  145,
+                  4
+                ],
+                "n_samples": 4
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 7,
+            "n_samples": 17,
+            "left": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 6,
+              "n_samples": 14,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  104,
+                  3
+                ],
+                "n_samples": 12
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  40,
+                  1
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                130,
+                3
+              ],
+              "n_samples": 3
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 0,
+        "threshold": 4,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 4,
+          "n_samples": 42,
+          "left": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 3,
+            "n_samples": 22,
+            "left": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 1,
+              "n_samples": 12,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  86,
+                  3
+                ],
+                "n_samples": 6
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  27,
+                  1
+                ],
+                "n_samples": 6
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 5,
+              "n_samples": 10,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  24,
+                  1
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  187,
+                  7
+                ],
+                "n_samples": 7
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 6,
+            "n_samples": 20,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 3,
+              "n_samples": 18,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  227,
+                  8
+                ],
+                "n_samples": 8
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  154,
+                  5
+                ],
+                "n_samples": 10
+              }
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                71,
+                2
+              ],
+              "n_samples": 2
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 2,
+          "threshold": 6,
+          "n_samples": 38,
+          "left": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 6,
+            "n_samples": 31,
+            "left": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 1,
+              "n_samples": 20,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  242,
+                  7
+                ],
+                "n_samples": 7
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  426,
+                  13
+                ],
+                "n_samples": 13
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 1,
+              "n_samples": 11,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  35,
+                  1
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  38,
+                  1
+                ],
+                "n_samples": 8
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 7,
+            "n_samples": 7,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 7,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  69,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  79,
+                  2
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                128,
+                3
+              ],
+              "n_samples": 3
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 0,
+        "threshold": 4,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 2,
+          "threshold": 4,
+          "n_samples": 45,
+          "left": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 1,
+            "n_samples": 24,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 0,
+              "n_samples": 10,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  31,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  99,
+                  4
+                ],
+                "n_samples": 8
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 2,
+              "n_samples": 14,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  215,
+                  8
+                ],
+                "n_samples": 8
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  181,
+                  6
+                ],
+                "n_samples": 6
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 3,
+            "threshold": 8,
+            "n_samples": 21,
+            "left": {
+              "type": "split",
+              "feature": 3,
+              "threshold": 1,
+              "n_samples": 17,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  55,
+                  2
+                ],
+                "n_samples": 8
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  31,
+                  1
+                ],
+                "n_samples": 9
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 2,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  71,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  37,
+                  1
+                ],
+                "n_samples": 2
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 2,
+          "threshold": 5,
+          "n_samples": 35,
+          "left": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 1,
+            "n_samples": 21,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 8,
+              "n_samples": 10,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  289,
+                  8
+                ],
+                "n_samples": 8
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  31,
+                  1
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 0,
+              "n_samples": 11,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  149,
+                  5
+                ],
+                "n_samples": 5
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  67,
+                  2
+                ],
+                "n_samples": 6
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 4,
+            "n_samples": 14,
+            "left": {
+              "type": "leaf",
+              "value": [
+                110,
+                3
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 5,
+              "n_samples": 11,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  265,
+                  6
+                ],
+                "n_samples": 6
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  42,
+                  1
+                ],
+                "n_samples": 5
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 1,
+        "threshold": 4,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 0,
+          "threshold": 4,
+          "n_samples": 43,
+          "left": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 5,
+            "n_samples": 24,
+            "left": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 1,
+              "n_samples": 15,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  24,
+                  1
+                ],
+                "n_samples": 6
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  77,
+                  3
+                ],
+                "n_samples": 9
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 6,
+              "n_samples": 9,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  32,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  197,
+                  7
+                ],
+                "n_samples": 7
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 0,
+            "n_samples": 19,
+            "left": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 8,
+              "n_samples": 5,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  86,
+                  3
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  33,
+                  1
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 3,
+              "n_samples": 14,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  234,
+                  7
+                ],
+                "n_samples": 7
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  240,
+                  7
+                ],
+                "n_samples": 7
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 2,
+          "threshold": 6,
+          "n_samples": 37,
+          "left": {
+            "type": "split",
+            "feature": 3,
+            "threshold": 8,
+            "n_samples": 27,
+            "left": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 3,
+              "n_samples": 23,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  227,
+                  7
+                ],
+                "n_samples": 14
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  275,
+                  9
+                ],
+                "n_samples": 9
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 6,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  71,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  37,
+                  1
+                ],
+                "n_samples": 2
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 5,
+            "n_samples": 10,
+            "left": {
+              "type": "leaf",
+              "value": [
+                71,
+                2
+              ],
+              "n_samples": 2
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 6,
+              "n_samples": 8,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  122,
+                  3
+                ],
+                "n_samples": 6
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  43,
+                  1
+                ],
+                "n_samples": 2
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 1,
+        "threshold": 5,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 0,
+          "threshold": 3,
+          "n_samples": 47,
+          "left": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 5,
+            "n_samples": 22,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 4,
+              "n_samples": 8,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  24,
+                  1
+                ],
+                "n_samples": 6
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  51,
+                  2
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 2,
+              "n_samples": 14,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  266,
+                  9
+                ],
+                "n_samples": 9
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  133,
+                  5
+                ],
+                "n_samples": 5
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 3,
+            "n_samples": 25,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 2,
+              "n_samples": 11,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  129,
+                  4
+                ],
+                "n_samples": 4
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  235,
+                  7
+                ],
+                "n_samples": 7
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 2,
+              "n_samples": 14,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  30,
+                  1
+                ],
+                "n_samples": 11
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  97,
+                  3
+                ],
+                "n_samples": 3
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 0,
+          "threshold": 4,
+          "n_samples": 33,
+          "left": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 0,
+            "n_samples": 15,
+            "left": {
+              "type": "leaf",
+              "value": [
+                106,
+                3
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 2,
+              "n_samples": 12,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  29,
+                  1
+                ],
+                "n_samples": 8
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  31,
+                  1
+                ],
+                "n_samples": 4
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 6,
+            "n_samples": 18,
+            "left": {
+              "type": "leaf",
+              "value": [
+                168,
+                5
+              ],
+              "n_samples": 5
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 2,
+              "n_samples": 13,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  116,
+                  3
+                ],
+                "n_samples": 6
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  297,
+                  7
+                ],
+                "n_samples": 7
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 0,
+        "threshold": 4,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 4,
+          "threshold": 1,
+          "n_samples": 43,
+          "left": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 1,
+            "n_samples": 6,
+            "left": {
+              "type": "leaf",
+              "value": [
+                30,
+                1
+              ],
+              "n_samples": 2
+            },
+            "right": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 0,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  26,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  51,
+                  2
+                ],
+                "n_samples": 2
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 3,
+            "n_samples": 37,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 3,
+              "n_samples": 19,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  30,
+                  1
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  427,
+                  16
+                ],
+                "n_samples": 16
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 0,
+              "n_samples": 18,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  27,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  501,
+                  16
+                ],
+                "n_samples": 16
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 4,
+          "threshold": 7,
+          "n_samples": 37,
+          "left": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 0,
+            "n_samples": 30,
+            "left": {
+              "type": "leaf",
+              "value": [
+                30,
+                1
+              ],
+              "n_samples": 4
+            },
+            "right": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 7,
+              "n_samples": 26,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  749,
+                  22
+                ],
+                "n_samples": 22
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  147,
+                  4
+                ],
+                "n_samples": 4
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 2,
+            "threshold": 6,
+            "n_samples": 7,
+            "left": {
+              "type": "leaf",
+              "value": [
+                36,
+                1
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                173,
+                4
+              ],
+              "n_samples": 4
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 0,
+        "threshold": 4,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 4,
+          "threshold": 7,
+          "n_samples": 49,
+          "left": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 4,
+            "n_samples": 41,
+            "left": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 5,
+              "n_samples": 24,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  351,
+                  14
+                ],
+                "n_samples": 14
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  297,
+                  10
+                ],
+                "n_samples": 10
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 0,
+              "n_samples": 17,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  82,
+                  3
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  63,
+                  2
+                ],
+                "n_samples": 14
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 1,
+            "n_samples": 8,
+            "left": {
+              "type": "leaf",
+              "value": [
+                23,
+                1
+              ],
+              "n_samples": 2
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 5,
+              "n_samples": 6,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  61,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  37,
+                  1
+                ],
+                "n_samples": 4
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 4,
+          "threshold": 6,
+          "n_samples": 31,
+          "left": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 7,
+            "n_samples": 18,
+            "left": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 4,
+              "n_samples": 9,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  162,
+                  5
+                ],
+                "n_samples": 5
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  145,
+                  4
+                ],
+                "n_samples": 4
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 1,
+              "n_samples": 9,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  100,
+                  3
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  63,
+                  2
+                ],
+                "n_samples": 6
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 6,
+            "n_samples": 13,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 7,
+              "n_samples": 7,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  122,
+                  3
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  159,
+                  4
+                ],
+                "n_samples": 4
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 3,
+              "threshold": 3,
+              "n_samples": 6,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  32,
+                  1
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  122,
+                  3
+                ],
+                "n_samples": 3
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 3,
+        "threshold": 6,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 1,
+          "threshold": 4,
+          "n_samples": 50,
+          "left": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 3,
+            "n_samples": 28,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 7,
+              "n_samples": 20,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  235,
+                  9
+                ],
+                "n_samples": 18
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  23,
+                  1
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 0,
+              "n_samples": 8,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  59,
+                  2
+                ],
+                "n_samples": 4
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  127,
+                  4
+                ],
+                "n_samples": 4
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 6,
+            "n_samples": 22,
+            "left": {
+              "type": "split",
+              "feature": 3,
+              "threshold": 1,
+              "n_samples": 16,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  111,
+                  4
+                ],
+                "n_samples": 4
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  127,
+                  4
+                ],
+                "n_samples": 12
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 5,
+              "n_samples": 6,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  38,
+                  1
+                ],
+                "n_samples": 4
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  79,
+                  2
+                ],
+                "n_samples": 2
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 2,
+          "threshold": 6,
+          "n_samples": 30,
+          "left": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 5,
+            "n_samples": 24,
+            "left": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 2,
+              "n_samples": 13,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  144,
+                  5
+                ],
+                "n_samples": 5
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  135,
+                  4
+                ],
+                "n_samples": 8
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 2,
+              "n_samples": 11,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  61,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  116,
+                  3
+                ],
+                "n_samples": 9
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 1,
+            "threshold": 6,
+            "n_samples": 6,
+            "left": {
+              "type": "leaf",
+              "value": [
+                39,
+                1
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                133,
+                3
+              ],
+              "n_samples": 3
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 4,
+        "threshold": 6,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 0,
+          "threshold": 5,
+          "n_samples": 44,
+          "left": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 3,
+            "n_samples": 33,
+            "left": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 5,
+              "n_samples": 24,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  498,
+                  19
+                ],
+                "n_samples": 19
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  30,
+                  1
+                ],
+                "n_samples": 5
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 3,
+              "n_samples": 9,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  29,
+                  1
+                ],
+                "n_samples": 6
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  94,
+                  3
+                ],
+                "n_samples": 3
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 6,
+            "n_samples": 11,
+            "left": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 4,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  34,
+                  1
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  38,
+                  1
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 3,
+              "threshold": 4,
+              "n_samples": 7,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  34,
+                  1
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  127,
+                  4
+                ],
+                "n_samples": 4
+              }
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 2,
+          "threshold": 1,
+          "n_samples": 36,
+          "left": {
+            "type": "split",
+            "feature": 4,
+            "threshold": 8,
+            "n_samples": 14,
+            "left": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 3,
+              "n_samples": 8,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  107,
+                  4
+                ],
+                "n_samples": 4
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  77,
+                  2
+                ],
+                "n_samples": 4
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 0,
+              "threshold": 1,
+              "n_samples": 6,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  76,
+                  3
+                ],
+                "n_samples": 3
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  31,
+                  1
+                ],
+                "n_samples": 3
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 2,
+            "n_samples": 22,
+            "left": {
+              "type": "leaf",
+              "value": [
+                30,
+                1
+              ],
+              "n_samples": 2
+            },
+            "right": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 8,
+              "n_samples": 20,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  112,
+                  3
+                ],
+                "n_samples": 12
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  331,
+                  8
+                ],
+                "n_samples": 8
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "split",
+        "feature": 3,
+        "threshold": 1,
+        "n_samples": 80,
+        "left": {
+          "type": "split",
+          "feature": 2,
+          "threshold": 5,
+          "n_samples": 21,
+          "left": {
+            "type": "split",
+            "feature": 3,
+            "threshold": 0,
+            "n_samples": 15,
+            "left": {
+              "type": "split",
+              "feature": 1,
+              "threshold": 3,
+              "n_samples": 10,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  26,
+                  1
+                ],
+                "n_samples": 4
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  83,
+                  3
+                ],
+                "n_samples": 6
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 4,
+              "n_samples": 5,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  51,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  31,
+                  1
+                ],
+                "n_samples": 3
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 5,
+            "n_samples": 6,
+            "left": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 1,
+              "n_samples": 4,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  55,
+                  2
+                ],
+                "n_samples": 2
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  29,
+                  1
+                ],
+                "n_samples": 2
+              }
+            },
+            "right": {
+              "type": "leaf",
+              "value": [
+                69,
+                2
+              ],
+              "n_samples": 2
+            }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 4,
+          "threshold": 6,
+          "n_samples": 59,
+          "left": {
+            "type": "split",
+            "feature": 3,
+            "threshold": 8,
+            "n_samples": 39,
+            "left": {
+              "type": "split",
+              "feature": 2,
+              "threshold": 3,
+              "n_samples": 32,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  557,
+                  19
+                ],
+                "n_samples": 19
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  422,
+                  13
+                ],
+                "n_samples": 13
+              }
+            },
+            "right": {
+              "type": "split",
+              "feature": 4,
+              "threshold": 1,
+              "n_samples": 7,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  174,
+                  5
+                ],
+                "n_samples": 5
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  33,
+                  1
+                ],
+                "n_samples": 2
+              }
+            }
+          },
+          "right": {
+            "type": "split",
+            "feature": 0,
+            "threshold": 2,
+            "n_samples": 20,
+            "left": {
+              "type": "leaf",
+              "value": [
+                94,
+                3
+              ],
+              "n_samples": 3
+            },
+            "right": {
+              "type": "split",
+              "feature": 3,
+              "threshold": 3,
+              "n_samples": 17,
+              "left": {
+                "type": "leaf",
+                "value": [
+                  149,
+                  4
+                ],
+                "n_samples": 4
+              },
+              "right": {
+                "type": "leaf",
+                "value": [
+                  525,
+                  13
+                ],
+                "n_samples": 13
+              }
+            }
+          }
         }
       }
-    },
-    "tree_sha256": "e27c7ab060c4e3f52010d41969a2a742ccf163c4ba1505a6bf96d5afc7b981d5"
+    ],
+    "n_trees": 12,
+    "forest_sha256": "bd26bbb67f111fda2be2a1c20db150c8a137965412c637d2a5c921eff5b01c0b"
   },
   "predictions": {
     "predictions": [
       [
-        32,
-        1
+        115729,
+        4032
       ],
       [
-        17,
-        1
+        3916501,
+        143640
       ],
       [
-        38,
-        1
+        15431,
+        504
       ],
       [
-        25,
-        1
+        1280177,
+        36960
       ],
       [
-        28,
-        1
+        5926421,
+        180180
       ],
       [
-        28,
-        1
+        1797433,
+        60480
       ],
       [
-        28,
-        1
+        3673141,
+        112320
       ],
       [
-        38,
-        1
+        150538613,
+        4979520
       ],
       [
-        28,
-        1
+        1627513,
+        57456
       ],
       [
-        25,
-        1
+        916691,
+        27360
       ],
       [
-        17,
-        1
+        10265337,
+        304304
       ],
       [
-        25,
-        1
+        16522063,
+        553280
       ],
       [
-        32,
-        1
+        708073,
+        18720
       ],
       [
-        25,
-        1
+        56012,
+        1365
       ],
       [
-        28,
-        1
+        9796321,
+        300960
       ],
       [
-        32,
-        1
+        358961,
+        12096
       ],
       [
-        17,
-        1
+        46712857,
+        1441440
       ],
       [
-        32,
-        1
+        156019,
+        4788
       ],
       [
-        25,
-        1
+        28385314,
+        855855
       ],
       [
-        28,
-        1
+        5134789,
+        171360
       ],
       [
-        25,
-        1
+        263012363,
+        9767520
       ],
       [
-        38,
-        1
+        2603753,
+        72072
       ],
       [
-        37,
-        1
+        613147,
+        19656
       ],
       [
-        37,
-        1
-      ],
-      [
-        38,
-        1
-      ],
-      [
-        28,
-        1
-      ],
-      [
-        38,
-        1
-      ],
-      [
-        32,
-        1
+        9887903,
+        288288
       ]
     ],
-    "predictions_sha256": "df6dc9fefe9149b9253546b01b7d22c722f9e1fd4b32bcf01fd47e8819277737"
+    "predictions_sha256": "88a959cb647f85a0fef4159c545a1e8c13d72ccf70b8a1c8627459bc9e7fbf71"
   },
   "metrics": {
     "train_mse": [
-      51,
-      20
+      519920424148144636783,
+      156074042855098368000
     ],
-    "n_leaves": 8
+    "n_trees": 12,
+    "total_leaves": 167
   }
 }
