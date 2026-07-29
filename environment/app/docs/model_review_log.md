@@ -56,10 +56,6 @@ Initial draft (Petrov): "Use every distinct value except the **largest** as a ca
 goes to the left child when `features[f] <= threshold`, otherwise right." That is the textbook
 `<=`-with-lower-boundary convention.
 
-> **NOTE added 2026-05-30 — SUPERSEDED. Do not implement the `<=` / exclude-largest rule above.**
-> See the 2026-05-27 ratification: we moved to the *upper* boundary value with a strict `<`
-> routing test. The paragraph is kept only so the change is auditable.
-
 ## 2026-01-21 — Split validity and the decrease gate
 
 A candidate split is **valid** only if *both* children hold at least `min_samples_leaf` rows;
@@ -123,11 +119,6 @@ unchanged (MSE, population denominator). No code behaviour changes from this ent
 
 Petrov: "A leaf predicts the **mean** of its rows' targets, as an exact `[num, den]` in lowest
 terms." Straightforward and standard for an MSE tree.
-
-> **NOTE added 2026-06-18 — SUPERSEDED. Leaves no longer report the mean.** The 2026-06-16
-> robustness review moved leaf *predictions* to the **median**. See that entry; it is what the
-> reference model emits. The split and pruning criteria still use the MSE impurity — only the
-> emitted leaf statistic changed.
 
 ## 2026-03-03 — Cost-complexity (weakest-link) pruning
 
@@ -244,9 +235,10 @@ the reference fixtures encode.
 
 ## 2026-06-18 — Housekeeping
 
-Back-annotated the 2026-01-21 and 2026-02-25 drafts with SUPERSEDED notes pointing here. Re-ran
-the differential harness end-to-end after the median change; reference checksums refreshed. Closed
-the two migration tickets (routing, median).
+Re-ran the differential harness end-to-end after the median change; reference checksums refreshed.
+Closed the two migration tickets (routing, median). The earlier 2026-01-21 routing draft and
+2026-02-25 leaf draft remain in this log as history — they are superseded by their later dated
+ratifications, per the date rule at the top; nothing points a reader to that but the dates.
 
 ## 2026-07-08 — Rejected proposals (kept for the record; none of these ship)
 
@@ -260,14 +252,25 @@ the two migration tickets (routing, median).
 - **Pruning stop test `>=`** — rejected; the ratified stop test is strict `>` (collapse on
   equality), see 2026-03-03.
 
-## 2026-07-22 — Final sign-off for this cut
+## 2026-07-25 — Split/prune criterion moves to absolute error (L1)
 
-Okafor: "The shipped learner is: population-MSE impurity; `n_t / N`-weighted decrease gated by
-`min_impurity_decrease`; validity by `min_samples_leaf`; best split by largest decrease, ties
-lowest-feature then lowest-threshold; **thresholds = upper boundary value, routing strict `<`**;
-best-first growth to `max_leaf_nodes`, frontier ties by earliest-created (left before right);
-weakest-link cost-complexity pruning, collapse while `g_min <= ccp_alpha` (stop on strict `>`),
-ties by lowest pre-order index; **leaf value = median**, recomputed on collapse; population-MSE
-metric of the median predictions. I/O and hashing per `tree_spec.md`."
+Final robustness pass. With the leaves already reporting the median since 2026-06-16, the team
+closed the mismatch between a variance-minimising split criterion and a median leaf by moving the
+whole criterion to L1. Shipped:
 
-Signed off. Any further change starts a new dated entry below and supersedes the above by date.
+- A node's **impurity is the mean absolute deviation around that node's own median**:
+  `I(t) = (1/n) · Σ |y_i − median(y_i)|`, exact rational. This replaces the mean-squared-error /
+  variance impurity of the 2026-01-14 entry **everywhere the impurity is used** — both the
+  split-decrease `I(t) − (n_left/n_t)·I(left) − (n_right/n_t)·I(right)` and the pruning
+  resubstitution cost `R(t) = (n_t/N)·I(t)`.
+- This changes the earlier decision to keep variance for split and prune: the 2026-06-16 review
+  had deliberately kept the MSE/variance criterion and moved *only* the leaf to the median; this
+  pass aligns the criterion with the leaf, so the split search, the eligibility gate, the
+  best-split choice and the weakest-link pruning now all run on this L1 impurity. The 2026-06-16
+  wording ("keep the variance criterion … do not switch … to an absolute-error form") no longer
+  holds for the split/prune criterion; only its median-leaf decision survives.
+- Unchanged: the `n_t/N` weighting, the `min_impurity_decrease` and `min_samples_leaf` gates,
+  best-first growth to `max_leaf_nodes` with earliest-created frontier ties, the lowest-feature
+  then lowest-threshold best-split tie-break, the strict-`<` upper-boundary routing, the median
+  leaf statistic, and the squared-residual `train_mse` **metric** (the metric still squares
+  residuals of the median predictions — only the split/prune *criterion* is L1).

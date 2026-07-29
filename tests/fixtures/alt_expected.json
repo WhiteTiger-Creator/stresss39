@@ -11,88 +11,32 @@
         "threshold": 6,
         "n_samples": 40,
         "left": {
-          "type": "split",
-          "feature": 3,
-          "threshold": 9,
-          "n_samples": 19,
-          "left": {
-            "type": "leaf",
-            "value": [
-              43,
-              2
-            ],
-            "n_samples": 14
-          },
-          "right": {
-            "type": "leaf",
-            "value": [
-              23,
-              1
-            ],
-            "n_samples": 5
-          }
+          "type": "leaf",
+          "value": [
+            22,
+            1
+          ],
+          "n_samples": 19
         },
         "right": {
-          "type": "split",
-          "feature": 0,
-          "threshold": 3,
-          "n_samples": 21,
-          "left": {
-            "type": "split",
-            "feature": 3,
-            "threshold": 6,
-            "n_samples": 11,
-            "left": {
-              "type": "split",
-              "feature": 1,
-              "threshold": 6,
-              "n_samples": 6,
-              "left": {
-                "type": "leaf",
-                "value": [
-                  24,
-                  1
-                ],
-                "n_samples": 3
-              },
-              "right": {
-                "type": "leaf",
-                "value": [
-                  28,
-                  1
-                ],
-                "n_samples": 3
-              }
-            },
-            "right": {
-              "type": "leaf",
-              "value": [
-                28,
-                1
-              ],
-              "n_samples": 5
-            }
-          },
-          "right": {
-            "type": "leaf",
-            "value": [
-              29,
-              1
-            ],
-            "n_samples": 10
-          }
+          "type": "leaf",
+          "value": [
+            28,
+            1
+          ],
+          "n_samples": 21
         }
       },
       "right": {
         "type": "split",
-        "feature": 2,
+        "feature": 1,
         "threshold": 6,
         "n_samples": 32,
         "left": {
           "type": "split",
-          "feature": 1,
+          "feature": 2,
           "threshold": 6,
-          "n_samples": 16,
+          "n_samples": 17,
           "left": {
             "type": "leaf",
             "value": [
@@ -102,20 +46,6 @@
             "n_samples": 7
           },
           "right": {
-            "type": "leaf",
-            "value": [
-              34,
-              1
-            ],
-            "n_samples": 9
-          }
-        },
-        "right": {
-          "type": "split",
-          "feature": 1,
-          "threshold": 6,
-          "n_samples": 16,
-          "left": {
             "type": "split",
             "feature": 3,
             "threshold": 6,
@@ -129,77 +59,49 @@
               "n_samples": 5
             },
             "right": {
-              "type": "split",
-              "feature": 0,
-              "threshold": 9,
-              "n_samples": 5,
-              "left": {
-                "type": "leaf",
-                "value": [
-                  37,
-                  1
-                ],
-                "n_samples": 3
-              },
-              "right": {
-                "type": "leaf",
-                "value": [
-                  67,
-                  2
-                ],
-                "n_samples": 2
-              }
-            }
-          },
-          "right": {
-            "type": "split",
-            "feature": 3,
-            "threshold": 6,
-            "n_samples": 6,
-            "left": {
-              "type": "split",
-              "feature": 1,
-              "threshold": 9,
-              "n_samples": 4,
-              "left": {
-                "type": "leaf",
-                "value": [
-                  36,
-                  1
-                ],
-                "n_samples": 2
-              },
-              "right": {
-                "type": "leaf",
-                "value": [
-                  39,
-                  1
-                ],
-                "n_samples": 2
-              }
-            },
-            "right": {
               "type": "leaf",
               "value": [
-                40,
+                37,
                 1
               ],
-              "n_samples": 2
+              "n_samples": 5
             }
+          }
+        },
+        "right": {
+          "type": "split",
+          "feature": 2,
+          "threshold": 6,
+          "n_samples": 15,
+          "left": {
+            "type": "leaf",
+            "value": [
+              34,
+              1
+            ],
+            "n_samples": 9
+          },
+          "right": {
+            "type": "leaf",
+            "value": [
+              77,
+              2
+            ],
+            "n_samples": 6
           }
         }
       }
     },
-    "tree_sha256": "7a7039cb7ff3743c8c0afd0c3a0d33d2d1430a84bc03876f552d83e42756aa6f"
+    "tree_sha256": "15aea476e55613dd9e16a82324a563b3f243e2f09cbacb895b5d04b7db13c561"
   },
   "predictions": {
     "predictions": [
       [
-        43,
-        2
+        22,
+        1
       ],
       [
-        29,
+        28,
         1
       ],
       [
@@ -207,16 +109,16 @@
         1
       ],
       [
-        43,
-        2
+        22,
+        1
       ],
       [
-        43,
-        2
+        22,
+        1
       ],
       [
-        67,
-        2
+        37,
+        1
       ],
       [
         34,
@@ -227,12 +129,12 @@
         1
       ],
       [
-        43,
-        2
+        22,
+        1
       ],
       [
-        40,
-        1
+        77,
+        2
       ],
       [
         27,
@@ -243,39 +145,7 @@
         1
       ],
       [
-        43,
-        2
-      ],
-      [
-        32,
-        1
-      ],
-      [
-        67,
-        2
-      ],
-      [
-        32,
-        1
-      ],
-      [
-        24,
-        1
-      ],
-      [
-        43,
-        2
-      ],
-      [
-        36,
-        1
-      ],
-      [
-        43,
-        2
-      ],
-      [
-        29,
+        22,
         1
       ],
       [
@@ -283,25 +153,57 @@
         1
       ],
       [
-        43,
+        37,
+        1
+      ],
+      [
+        32,
+        1
+      ],
+      [
+        28,
+        1
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        77,
         2
       ],
       [
-        29,
+        22,
         1
       ],
       [
-        40,
+        28,
         1
+      ],
+      [
+        32,
+        1
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        28,
+        1
+      ],
+      [
+        77,
+        2
       ]
     ],
-    "predictions_sha256": "1341a0d3267b2fe6855f1358babcc7f7bd5f336c8eeccaa2c3f92a1c87b4bf0a"
+    "predictions_sha256": "b920c5093a2fa5d0ba35b41e210e856f5a0b09629aaf50ecfc62ce5691bd7044"
   },
   "metrics": {
     "train_mse": [
-      95,
-      72
+      403,
+      144
     ],
-    "n_leaves": 14
+    "n_leaves": 7
   }
 }

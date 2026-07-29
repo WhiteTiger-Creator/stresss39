@@ -5,9 +5,10 @@ the I/O contract in /app/docs/tree_spec.md. All impurity, leaf and pruning arith
 uses fractions.Fraction so the model, predictions and metrics are bit-exact and
 independent of floating-point order of operations. The tree is grown by
 weighted-impurity-decrease best-first CART and then reduced by minimal cost-complexity
-(weakest-link) pruning. Per the review log's later-dated revisions, split thresholds are
-the upper boundary value with a strict `<` routing test, and each leaf reports the
-MEDIAN of its rows' targets (the split and pruning criteria stay mean-based MSE).
+(weakest-link) pruning. Per the review log's later-dated revisions: the split and pruning
+criterion is L1 (mean absolute deviation around the median, 2026-07-25), split thresholds
+are the upper boundary value with a strict `<` routing test, and each leaf reports the
+MEDIAN of its rows' targets.
 """
 
 from __future__ import annotations
@@ -41,10 +42,12 @@ def _leaf_value(targets: list[int]) -> Fraction:
 
 
 def _impurity(targets: list[int]) -> Fraction:
-    # Mean squared error criterion: (1/n) * sum((y - mean)^2), exact.
+    # Mean ABSOLUTE deviation around the MEDIAN (L1 criterion), exact — the board's
+    # robustness pass replaced the variance/MSE criterion with absolute error, which is
+    # minimized by the median that the leaves also report.
     n = len(targets)
-    mean = _mean(targets)
-    total = sum((Fraction(y) - mean) ** 2 for y in targets)
+    med = _leaf_value(targets)
+    total = sum(abs(Fraction(y) - med) for y in targets)
     return total / n
 
 
