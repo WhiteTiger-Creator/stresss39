@@ -1,28 +1,5 @@
-# Fit an exact-seeded random-forest regressor
+Bring the index-rebuild deployment back online after a failed index-rebuild rollout. The rollout left the rebuild host in a bad state: the dedicated system account, the operator wrapper at `/usr/local/bin/index-rebuild`, the compile lock under `/var/lock`, the cron schedule, the output directory ownership and permissions, the compile log directory under `/var/log/index-rebuild` and its rotation drop-in are all missing or wrong, and an unrotated leftover from the crashed run is still sitting on disk. `/app/docs/deployment_runbook.md` defines the deployment state you need to restore: provision the account with no interactive shell, reinstate the schedule under that account, correct the ownership and modes, prune the rollout leftover, clear the stale lock, and install rotation so the scheduled compile both runs and rotates as the system account rather than as root.
 
-Implement `/app/fit_forest.py`, a command-line program that trains a deterministic, exact-seeded
-random-forest regressor on the dataset under `/app/data` and writes the fitted model, its test-set
-predictions, and training metrics to an output directory.
+The same rollout shipped a compiler build that produces unsafe rebuild queues, so restoring the host is not enough on its own. Return `/app/workflow/index_rebuild.py` to the behaviour the change-advisory board signed off, keeping its interface `--input PATH --output-dir PATH` with defaults `/app/data/segments.json` and `/app/output`, so that it writes `rebuild_summary.json`, `segment_windows.json` and compact `rebuild_queue.jsonl`. It has to stay idempotent and keep working on a different segment input. `/app/docs/rebuild_contract.json` is the output contract — source paths, schemas, exact key sets, identifier payloads and checksum encodings — and your output must match it exactly.
 
-The program takes two optional flags, `--data-dir` (default `/app/data`) and `--output-dir`
-(default `/app/output`). It reads `train.json`, `test.json` and `config.json` from the data
-directory and writes `model.json`, `predictions.json` and `metrics.json` to the output directory.
-
-The complete algorithm — the single seeded LCG and the **exact order** in which its stream is
-consumed (bootstrap sampling with replacement per tree, then the per-node feature subsample drawn
-by a partial Fisher–Yates shuffle during a pre-order walk, all off one never-reset global stream),
-the MSE split search over the subsampled features, the leaf means, the mean aggregation across
-trees, the JSON node shapes, the exact-rational `[numerator, denominator]` encoding, and the
-canonical SHA-256 hashing — is specified in full in `/app/docs/forest_spec.md`. Follow it exactly.
-
-The heart of the task is reproducing the generator's consumption order bit-for-bit: which rolls
-feed the bootstrap draw, which feed each node's feature subsample, and in what order nodes and
-trees consume the one shared stream. A standard library random forest (numpy/sklearn seeding) will
-**not** reproduce this stream and will not match.
-
-Every quantity the model reports (leaf values, predictions, and the training MSE) is an **exact
-rational number** emitted as `[numerator, denominator]` in lowest terms, so your arithmetic must be
-exact rather than floating point. Two correct implementations produce byte-identical output,
-including the embedded checksums. The program must be deterministic (a rerun reproduces the same
-files) and must work on any dataset of the same shape, not just the shipped one — derive everything
-from the data, the config and the specification, and do not hardcode outputs.
+How the compile is meant to behave is not in the contract. The change-advisory board settled it, and `/app/rebuild/index_review_log.md` is the record: normalization, dedupe, attenuation, the debt ledger, scoring, priority and ordering are all IDX-ticketed entries in there. Where two entries disagree, the later dated decision governs. Leave `/app/workflow/.index_rebuild.original` unchanged, and do not read or reference verifier artifacts in the repaired source.

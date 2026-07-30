@@ -4,14 +4,14 @@ version = "2.0"
 author_name = "anonymous"
 author_email = "anonymous"
 difficulty = "hard"
-category = "machine-learning"
+category = "system-administration"
 subcategories = []
 number_of_milestones = 0
 codebase_size = "minimal"
 languages = ["python"]
-tags = ["machine-learning", "decision-tree", "cart", "exact-arithmetic", "from-spec"]
-expert_time_estimate_min = 120
-junior_time_estimate_min = 300
+tags = ["host-recovery", "cron", "permissions", "search-index", "index-rebuild"]
+expert_time_estimate_min = 240
+junior_time_estimate_min = 540
 
 [verifier]
 timeout_sec = 300.0

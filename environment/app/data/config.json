@@ -1,9 +1,0 @@
-{
-  "n_estimators": 12,
-  "max_depth": 4,
-  "min_samples_split": 4,
-  "min_samples_leaf": 2,
-  "max_features": 2,
-  "seed": 20260729,
-  "lcg": { "a": 1103515245, "c": 12345, "m": 2147483648 }
-}

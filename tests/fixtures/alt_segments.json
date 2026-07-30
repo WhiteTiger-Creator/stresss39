@@ -1,0 +1,114 @@
+[
+  {
+    "segment_id": "au5001",
+    "shard": "auth",
+    "start_ms": 100,
+    "end_ms": 356,
+    "severity": "critical",
+    "planned": false
+  },
+  {
+    "segment_id": "au5002",
+    "shard": "Authentication",
+    "start_ms": 500,
+    "end_ms": 743,
+    "severity": "major",
+    "planned": false
+  },
+  {
+    "segment_id": "au5003",
+    "shard": "auth",
+    "start_ms": 900,
+    "end_ms": 1168,
+    "severity": "critical",
+    "planned": false
+  },
+  {
+    "segment_id": "bi5004",
+    "shard": "billing",
+    "start_ms": 200,
+    "end_ms": 451,
+    "severity": "major",
+    "planned": false
+  },
+  {
+    "segment_id": "bi5005",
+    "shard": "Payments ",
+    "start_ms": 468,
+    "end_ms": 529,
+    "severity": "critical",
+    "planned": false
+  },
+  {
+    "segment_id": "bi5006",
+    "shard": "billing",
+    "start_ms": 800,
+    "end_ms": 1300,
+    "severity": "critical",
+    "planned": "1"
+  },
+  {
+    "segment_id": "bi5007",
+    "shard": "Payments ",
+    "start_ms": 820,
+    "end_ms": 1058,
+    "severity": "critical",
+    "planned": false
+  },
+  {
+    "segment_id": "ga5008",
+    "shard": "gateway",
+    "start_ms": 150,
+    "end_ms": 383,
+    "severity": "minor",
+    "planned": false
+  },
+  {
+    "segment_id": "ga5009",
+    "shard": "GATEWAY",
+    "start_ms": 600,
+    "end_ms": 862,
+    "severity": "major",
+    "planned": false
+  },
+  {
+    "segment_id": "ga5010",
+    "shard": "gateway",
+    "start_ms": 1050,
+    "end_ms": 1297,
+    "severity": "critical",
+    "planned": false
+  },
+  {
+    "segment_id": "cd5011",
+    "shard": "cdn",
+    "start_ms": 130,
+    "end_ms": 389,
+    "severity": "major",
+    "planned": false
+  },
+  {
+    "segment_id": "cd5012",
+    "shard": "Cdn ",
+    "start_ms": 900,
+    "end_ms": 1141,
+    "severity": "sevX",
+    "planned": false
+  },
+  {
+    "segment_id": "AD1",
+    "shard": "auth",
+    "start_ms": 1600,
+    "end_ms": 1853,
+    "severity": "minor",
+    "planned": false
+  },
+  {
+    "segment_id": "AD1",
+    "shard": "auth",
+    "start_ms": 1600,
+    "end_ms": 1871,
+    "severity": "major",
+    "planned": false
+  }
+]

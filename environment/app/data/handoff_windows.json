@@ -1,0 +1,80 @@
+[
+  {
+    "shard": "auth",
+    "severity_scope": "all",
+    "start_ms": 1064,
+    "end_ms": 1150
+  },
+  {
+    "shard": "auth",
+    "severity_scope": "all",
+    "start_ms": 2272,
+    "end_ms": 2336
+  },
+  {
+    "shard": "billing",
+    "severity_scope": "all",
+    "start_ms": 349,
+    "end_ms": 411
+  },
+  {
+    "shard": "billing",
+    "severity_scope": "all",
+    "start_ms": 1672,
+    "end_ms": 1758
+  },
+  {
+    "shard": "search",
+    "severity_scope": "all",
+    "start_ms": 1105,
+    "end_ms": 1169
+  },
+  {
+    "shard": "search",
+    "severity_scope": "all",
+    "start_ms": 1570,
+    "end_ms": 1632
+  },
+  {
+    "shard": "gateway",
+    "severity_scope": "all",
+    "start_ms": 1155,
+    "end_ms": 1241
+  },
+  {
+    "shard": "cache",
+    "severity_scope": "all",
+    "start_ms": 280,
+    "end_ms": 344
+  },
+  {
+    "shard": "cache",
+    "severity_scope": "all",
+    "start_ms": 627,
+    "end_ms": 689
+  },
+  {
+    "shard": "storage",
+    "severity_scope": "all",
+    "start_ms": 374,
+    "end_ms": 460
+  },
+  {
+    "shard": "cdn",
+    "severity_scope": "all",
+    "start_ms": 310,
+    "end_ms": 374
+  },
+  {
+    "shard": "cdn",
+    "severity_scope": "all",
+    "start_ms": 917,
+    "end_ms": 979
+  },
+  {
+    "shard": "stream",
+    "severity_scope": "all",
+    "start_ms": 1251,
+    "end_ms": 1337
+  }
+]

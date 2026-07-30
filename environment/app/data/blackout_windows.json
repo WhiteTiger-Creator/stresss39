@@ -1,0 +1,50 @@
+[
+  {
+    "shard": "auth",
+    "severity_scope": "critical",
+    "start_ms": 1506,
+    "end_ms": 1597
+  },
+  {
+    "shard": "auth",
+    "severity_scope": "all",
+    "start_ms": 2177,
+    "end_ms": 2254
+  },
+  {
+    "shard": "search",
+    "severity_scope": "all",
+    "start_ms": 369,
+    "end_ms": 460
+  },
+  {
+    "shard": "search",
+    "severity_scope": "critical",
+    "start_ms": 988,
+    "end_ms": 1065
+  },
+  {
+    "shard": "gateway",
+    "severity_scope": "critical",
+    "start_ms": 1537,
+    "end_ms": 1628
+  },
+  {
+    "shard": "cache",
+    "severity_scope": "all",
+    "start_ms": 180,
+    "end_ms": 257
+  },
+  {
+    "shard": "storage",
+    "severity_scope": "critical",
+    "start_ms": 1001,
+    "end_ms": 1092
+  },
+  {
+    "shard": "cdn",
+    "severity_scope": "all",
+    "start_ms": 217,
+    "end_ms": 294
+  }
+]

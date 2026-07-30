@@ -1,0 +1,230 @@
+[
+  {
+    "shard": "auth",
+    "severity_scope": "all",
+    "start_ms": 1023,
+    "end_ms": 1070
+  },
+  {
+    "shard": "auth",
+    "severity_scope": "all",
+    "start_ms": 2216,
+    "end_ms": 2269
+  },
+  {
+    "shard": "billing",
+    "severity_scope": "all",
+    "start_ms": 1627,
+    "end_ms": 1674
+  },
+  {
+    "shard": "search",
+    "severity_scope": "all",
+    "start_ms": 1033,
+    "end_ms": 1086
+  },
+  {
+    "shard": "gateway",
+    "severity_scope": "all",
+    "start_ms": 1119,
+    "end_ms": 1166
+  },
+  {
+    "shard": "cache",
+    "severity_scope": "all",
+    "start_ms": 220,
+    "end_ms": 273
+  },
+  {
+    "shard": "storage",
+    "severity_scope": "all",
+    "start_ms": 328,
+    "end_ms": 375
+  },
+  {
+    "shard": "cdn",
+    "severity_scope": "all",
+    "start_ms": 255,
+    "end_ms": 308
+  },
+  {
+    "shard": "stream",
+    "severity_scope": "all",
+    "start_ms": 1217,
+    "end_ms": 1264
+  },
+  {
+    "shard": "auth",
+    "severity_scope": "critical",
+    "start_ms": 263,
+    "end_ms": 310
+  },
+  {
+    "shard": "auth",
+    "severity_scope": "major",
+    "start_ms": 681,
+    "end_ms": 742
+  },
+  {
+    "shard": "auth",
+    "severity_scope": "critical",
+    "start_ms": 1047,
+    "end_ms": 1118
+  },
+  {
+    "shard": "auth",
+    "severity_scope": "critical",
+    "start_ms": 1820,
+    "end_ms": 1909
+  },
+  {
+    "shard": "auth",
+    "severity_scope": "major",
+    "start_ms": 2233,
+    "end_ms": 2280
+  },
+  {
+    "shard": "auth",
+    "severity_scope": "minor",
+    "start_ms": 2779,
+    "end_ms": 2840
+  },
+  {
+    "shard": "billing",
+    "severity_scope": "critical",
+    "start_ms": 308,
+    "end_ms": 379
+  },
+  {
+    "shard": "billing",
+    "severity_scope": "major",
+    "start_ms": 691,
+    "end_ms": 780
+  },
+  {
+    "shard": "billing",
+    "severity_scope": "critical",
+    "start_ms": 1109,
+    "end_ms": 1156
+  },
+  {
+    "shard": "billing",
+    "severity_scope": "major",
+    "start_ms": 1655,
+    "end_ms": 1716
+  },
+  {
+    "shard": "billing",
+    "severity_scope": "major",
+    "start_ms": 2753,
+    "end_ms": 2824
+  },
+  {
+    "shard": "cache",
+    "severity_scope": "minor",
+    "start_ms": 241,
+    "end_ms": 330
+  },
+  {
+    "shard": "cache",
+    "severity_scope": "minor",
+    "start_ms": 586,
+    "end_ms": 633
+  },
+  {
+    "shard": "cache",
+    "severity_scope": "major",
+    "start_ms": 953,
+    "end_ms": 1014
+  },
+  {
+    "shard": "cache",
+    "severity_scope": "critical",
+    "start_ms": 1318,
+    "end_ms": 1389
+  },
+  {
+    "shard": "cdn",
+    "severity_scope": "major",
+    "start_ms": 271,
+    "end_ms": 360
+  },
+  {
+    "shard": "cdn",
+    "severity_scope": "critical",
+    "start_ms": 876,
+    "end_ms": 923
+  },
+  {
+    "shard": "gateway",
+    "severity_scope": "major",
+    "start_ms": 294,
+    "end_ms": 355
+  },
+  {
+    "shard": "gateway",
+    "severity_scope": "critical",
+    "start_ms": 752,
+    "end_ms": 823
+  },
+  {
+    "shard": "gateway",
+    "severity_scope": "minor",
+    "start_ms": 1138,
+    "end_ms": 1227
+  },
+  {
+    "shard": "gateway",
+    "severity_scope": "critical",
+    "start_ms": 1611,
+    "end_ms": 1658
+  },
+  {
+    "shard": "search",
+    "severity_scope": "major",
+    "start_ms": 609,
+    "end_ms": 670
+  },
+  {
+    "shard": "search",
+    "severity_scope": "critical",
+    "start_ms": 1066,
+    "end_ms": 1137
+  },
+  {
+    "shard": "search",
+    "severity_scope": "major",
+    "start_ms": 1529,
+    "end_ms": 1618
+  },
+  {
+    "shard": "storage",
+    "severity_scope": "critical",
+    "start_ms": 357,
+    "end_ms": 404
+  },
+  {
+    "shard": "storage",
+    "severity_scope": "critical",
+    "start_ms": 1064,
+    "end_ms": 1125
+  },
+  {
+    "shard": "stream",
+    "severity_scope": "minor",
+    "start_ms": 308,
+    "end_ms": 379
+  },
+  {
+    "shard": "stream",
+    "severity_scope": "critical",
+    "start_ms": 799,
+    "end_ms": 888
+  },
+  {
+    "shard": "stream",
+    "severity_scope": "major",
+    "start_ms": 1234,
+    "end_ms": 1281
+  }
+]

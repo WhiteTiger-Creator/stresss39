@@ -1,0 +1,52 @@
+{
+  "default": {
+    "queue_min_effective_ms": 234,
+    "critical_p1_min_ms": 280,
+    "critical_threshold_ms": 650,
+    "high_threshold_ms": 320,
+    "no_overlap_high_duration_ms": 450,
+    "critical_count_for_critical": 2,
+    "no_overlap_bonus": 4,
+    "segment_bonus": 1,
+    "suppress_penalty_ms": 40,
+    "boost_credit_ms": 30,
+    "suppress_unit_ms": 50,
+    "boost_unit_ms": 50,
+    "min_queue_floor_ms": 120,
+    "boost_force_critical_ms": 140,
+    "boost_high_relief_ms": 40,
+    "severity_weight": {
+      "critical": 5,
+      "major": 3,
+      "minor": 1
+    },
+    "score_threshold_critical": 38,
+    "score_threshold_high": 24,
+    "handoff_force_critical_ms": 59
+  },
+  "shard_overrides": {
+    "auth": {
+      "queue_min_effective_ms": 240,
+      "critical_threshold_ms": 620,
+      "high_threshold_ms": 310,
+      "no_overlap_high_duration_ms": 430,
+      "boost_credit_ms": 35,
+      "boost_force_critical_ms": 130
+    },
+    "billing": {
+      "queue_min_effective_ms": 210,
+      "high_threshold_ms": 300,
+      "segment_bonus": 2,
+      "suppress_penalty_ms": 45,
+      "boost_high_relief_ms": 30
+    },
+    "search": {
+      "queue_min_effective_ms": 230,
+      "critical_threshold_ms": 600,
+      "score_threshold_critical": 32,
+      "score_threshold_high": 17,
+      "suppress_unit_ms": 40,
+      "boost_unit_ms": 40
+    }
+  }
+}
